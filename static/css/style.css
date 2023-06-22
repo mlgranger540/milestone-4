@@ -96,8 +96,17 @@ h2 {
 }
 
 .colour-3 {
-    color: #ca9073;
+    /* color: #ca9073; */
+    color: #d89a7a;
 }
+
+.options {
+    float: right;
+    font-size: 150%;
+    color: #eb7366;
+    text-shadow: #fbd9d4 3px 3px 3px;
+}
+
 
 /* Navbar */
 .navbar-nav {
@@ -164,4 +173,9 @@ h2 {
 #footer {
     background-color: #ffbd88;
     background-image: linear-gradient(#fecd95, #f8a676);
+}
+
+.social-buttons {
+    font-size: 140%;
+    text-shadow: #fbd9d4 3px 3px 3px;
 }
