@@ -14,7 +14,12 @@ body {
 a {
     text-decoration: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
     color: #a37d79;
+}
+
+button {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 p {
@@ -173,6 +178,29 @@ h2 {
 
 .product {
     width: 100%;
+}
+
+
+/* Cart */
+
+table {
+    border: #fecd95 3px solid;
+}
+
+th, td {
+    border: #fecd95 3px solid;
+}
+
+.table-heading {
+    font-size: 115%;
+}
+
+.checkout-button {
+    background-image: linear-gradient(#f8a676, #fecd95);
+    border-radius: 0.4rem;
+    padding: 10% 17%;
+    font-size: 118%;
+    color: #957572;
 }
 
 
