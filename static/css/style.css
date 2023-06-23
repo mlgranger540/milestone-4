@@ -19,10 +19,13 @@ a {
 }
 
 button {
+    background-image: linear-gradient(#f8a676, #fecd95);
+    border-radius: 0.4rem;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #957572;
 }
 
-p {
+p, h3 {
     margin-bottom: 0;
 }
 
@@ -195,20 +198,44 @@ th, td {
     font-size: 115%;
 }
 
-.checkout-button {
-    background-image: linear-gradient(#f8a676, #fecd95);
-    border-radius: 0.4rem;
+#checkout-button {
     padding: 10% 17%;
     font-size: 118%;
-    color: #957572;
 }
 
 
 /* Contact */
 
 .contact {
-    font-size: 130%;
+    font-size: 125%;
     letter-spacing: 1px;
+}
+
+
+/* Log In */
+
+.log-in-box-top {
+    border: #fecd95 3px solid;
+    border-bottom: none;
+}
+
+.log-in-box-bottom {
+    border: #fecd95 3px solid;
+    border-top: none;
+}
+
+label {
+    font-size: 120%;
+}
+
+input[type=text], input[type=password] {
+    border: #fecd95 2px solid;
+    border-radius: 0.3rem;
+}
+
+#log-in-button {
+    padding: 1% 4%;
+    font-size: 118%;
 }
 
 
