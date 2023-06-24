@@ -238,6 +238,16 @@ input[type=text], input[type=password] {
     font-size: 118%;
 }
 
+/* Profile */
+
+ul {
+    list-style-type: none;
+}
+
+.details {
+    font-size: 120%;
+}
+
 
 /* Footer */
 #footer {
