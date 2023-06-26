@@ -183,6 +183,23 @@ h2 {
     width: 100%;
 }
 
+/* Product Page */
+
+.price {
+    font-size: 121%;
+}
+
+.description {
+    font-weight: 600;
+}
+
+#add-to-cart-button {
+    padding: 6% 10%;
+    margin-bottom: 5%;
+    font-size: 102%;
+    font-weight: 600;
+}
+
 
 /* Cart */
 
@@ -199,7 +216,7 @@ th, td {
 }
 
 #checkout-button {
-    padding: 10% 17%;
+    padding: 6% 11%;
     font-size: 118%;
 }
 
