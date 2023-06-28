@@ -33,5 +33,5 @@ def get_all_products(request):
         x.price = str(Decimal(price.unit_amount_decimal) / 100) # JSON doesnt support decimal
     return HttpResponse(json.dumps(all_products), content_type='application/json')
 
-class ShopPageView(TemplateView):
-    template_name = 'shop.html'
+class ProductPageView(TemplateView):
+    template_name = 'product.html'

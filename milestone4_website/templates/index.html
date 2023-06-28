@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Delicious+Handrawn&family=Indie+Flower&display=swap" rel="stylesheet">
-    <link href="static/css/style.css" rel="stylesheet" type="text/css">
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
     <script src="https://kit.fontawesome.com/22fc12a701.js" crossorigin="anonymous"></script>
 </head>
 
@@ -25,7 +25,7 @@
                 </a>
             </div>
             <div class="col-4">
-                <a href="./cart.html">
+                <a href="./orders/cart">
                     <i class="options fa-solid fa-cart-shopping mt-5 me-5"></i>
                 </a>
                 <a href="./accounts/login">
@@ -40,7 +40,7 @@
                         <a class="nav-link ps-4 pe-4" href="./">Home</a>
                     </li>
                     <li class="nav-item item-mid ps-5 pe-5">
-                        <a class="nav-link ps-4 pe-4" href="./products/">Shop</a>
+                        <a class="nav-link ps-4 pe-4" href="./shop">Shop</a>
                     </li>
                     <li class="nav-item item-end ps-5 pe-5">
                         <a class="nav-link ps-4 pe-4" href="./contact">Contact</a>
@@ -51,8 +51,8 @@
     </header>
 
     <section>
-        {% if user.is_authenticated %}
-  Hi {{ user.username }}!
+{% if user.is_authenticated %}
+    Hi {{ user.username }}!
 {% endif %}
         <div class="row">
             <h3 class="text-center pt-5 pb-4">About</h3>
@@ -72,7 +72,7 @@
             <div class="row">
                 <div class="col-1"></div>
                 <div class="product-box item-start text-center col-2 pt-5 pb-5">
-                    <a href="./product.html">
+                    <a href="./products/product">
                         <img class="product" src="./static/images/queer-bros-cover.png" alt="Queer Bros volume 1" title="Queer Bros vol. 1">
                         <p title="Queer Bros vol. 1" class="pt-4">Queer Bros vol. 1</p>
                     </a>
@@ -111,7 +111,7 @@
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-6 pt-4 pb-4">
-                    <a class="see-all" href="./products/">See all</a>
+                    <a class="see-all" href="./shop">See all</a>
                 </div>
                 <div class="col-3"></div>
             </div>

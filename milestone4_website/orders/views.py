@@ -132,3 +132,6 @@ class SuccessView(TemplateView):
 
 class CancelledView(TemplateView):
     template_name = 'cancelled.html'
+
+class CartPageView(TemplateView):
+    template_name = 'cart.html'
