@@ -2,10 +2,6 @@ document.addEventListener("DOMContentLoaded", async function(event) {
     await fetch('/products/all',{method:"GET"}).then(response => response.json()).then((data)=>{
         let actualData = data.data;
         console.log(actualData);
-        // document.getElementById("product-1-img").src = actualData[0].images;
-        // document.getElementById("product-1-name").innerHTML = actualData[0].name;
-        // document.getElementById("product-1-price").innerHTML = actualData[0].price;
-
         let productsDiv = '<div class="row"><div class="product-box-start col-1"></div>';
         for (let i in actualData){
             let productImg = actualData[i].images;

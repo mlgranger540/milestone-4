@@ -159,16 +159,16 @@ h2 {
 .product-box {
     border-top: #fecd95 3px solid;
     border-bottom: #fecd95 3px solid;
-    border-left: #fecd95 1.5px solid;
-    border-right: #fecd95 1.5px solid;
+    border-left: #fecd95 2px solid;
+    border-right: #fecd95 1px solid;
 }
 
 .product-box-start {
-    border-right: #fecd95 1.5px solid;
+    border-right: #fecd95 1px solid;
 }
 
 .product-box-end {
-    border-left: #fecd95 1.5px solid;
+    border-left: #fecd95 2px solid;
 }
 
 #product-end {
