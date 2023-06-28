@@ -35,7 +35,7 @@ SECRET_KEY = 'django-insecure-m8j%kp#6r%9jyo7jwo8wr67n_^kwbef-t#m^^)_yfm(e1o12d$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [https://little-bit-queer-art-shop-bed824a2914a.herokuapp.com/]
+ALLOWED_HOSTS = ['little-bit-queer-art-shop-bed824a2914a.herokuapp.com']
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
