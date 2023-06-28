@@ -44,10 +44,10 @@ LOGOUT_REDIRECT_URL = "/"
 # Application definition
 
 INSTALLED_APPS = [
-    'milestone4_website.users',
-    'milestone4_website.products',
-    'milestone4_website.orders',
-    'milestone4_website.home',
+    'users',
+    'products',
+    'orders',
+    'home',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
