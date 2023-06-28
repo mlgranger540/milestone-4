@@ -2,24 +2,24 @@ document.addEventListener("DOMContentLoaded", async function(event) {
     await fetch('/products/all',{method:"GET"}).then(response => response.json()).then((data)=>{
         let actualData = data.data;
         console.log(actualData);
-        let productNames = [];
-        let productImgs = [];
-        let productPrices = [];
-        for (let i in actualData) {
-            let productName = actualData[i].name;
-            console.log(productName);
-            productNames += productName;
-        }
-        for (let i in actualData) {
+        // document.getElementById("product-1-img").src = actualData[0].images;
+        // document.getElementById("product-1-name").innerHTML = actualData[0].name;
+        // document.getElementById("product-1-price").innerHTML = actualData[0].price;
+
+        let productsDiv = '<div class="row"><div class="product-box-start col-1"></div>';
+        for (let i in actualData){
             let productImg = actualData[i].images;
-            productImgs += productImg;
+            let productName = actualData[i].name;
+            let productPrice = '£' + actualData[i].price;
+            productsDiv += '<div class="product-box text-center col-2 pt-5 pb-5">';
+            productsDiv += '<a href="./products/product">'
+            productsDiv += '<img class="product" src="' + productImg + '">';
+            productsDiv += '<p class="pt-4">' + productName + '</p>';
+            productsDiv += '</a>'
+            productsDiv += '<p class="pt-1">' + productPrice + '</p>';
+            productsDiv += '</div>';
         }
-        for (let i in actualData) {
-            let productPrice = "£" + actualData[i].price;
-            productPrices += productPrice;
-        }
-        console.log(productNames);
-        console.log(productImgs);
-        console.log(productPrices);
+        productsDiv += '<div class="product-box-end col-1"></div></div>';
+        document.getElementById("products-div").innerHTML = productsDiv;
     })
 });
