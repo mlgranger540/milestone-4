@@ -29,7 +29,7 @@ def get_all_products(request):
         x.stock_left = indiv_product.quantity   
         # Add product ID from database
         x.db_id = indiv_product.id
-        # Add in price info from Stripe
+        # Add price info from Stripe
         x.price = str(Decimal(price.unit_amount_decimal) / 100) # JSON doesnt support decimal
     return HttpResponse(json.dumps(all_products), content_type='application/json')
 

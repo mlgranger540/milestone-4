@@ -1,9 +1,12 @@
 document.addEventListener("DOMContentLoaded", async function(event) {
     await fetch('/products/all',{method:"GET"}).then(response => response.json()).then((data)=>{
+        // Get array of all products
         let actualData = data.data;
         console.log(actualData);
+        
+        // Build and display div for newest 5 products
         let productsDiv = '<div class="row"><div class="product-box-start col-1"></div>';
-        for (let i in actualData){
+        for (let i = 0; i < 5; i++){
             let productImg = actualData[i].images;
             let productName = actualData[i].name;
             let productPrice = '£' + actualData[i].price;
