@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async function(event) {
         // Get array of all products
         let actualData = data.data;
         console.log(actualData);
-        
+
         // Build and display div for newest 5 products
         let productsDiv = '<div class="row"><div class="product-box-start col-1"></div>';
         for (let i = 0; i < 5; i++){
@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", async function(event) {
             let productPrice = '£' + actualData[i].price;
             productsDiv += '<div class="product-box text-center col-2 pt-5 pb-5">';
             productsDiv += '<a href="./products/product">'
-            productsDiv += '<img class="product" src="' + productImg + '">';
-            productsDiv += '<p class="pt-4">' + productName + '</p>';
+            productsDiv += '<img class="product" src="' + productImg + '" alt="' + productName + '" title="' + productName + '">';
+            productsDiv += '<p class="pt-4" title="' + productName + '">' + productName + '</p>';
             productsDiv += '</a>'
             productsDiv += '<p class="pt-1">' + productPrice + '</p>';
             productsDiv += '</div>';

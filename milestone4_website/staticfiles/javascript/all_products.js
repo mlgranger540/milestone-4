@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", async function(event) {
             let productPrice = '£' + comics[i].price;
             comicsDiv += '<div class="product-box text-center col-2 pt-5 pb-5">';
             comicsDiv += '<a href="./products/product">'
-            comicsDiv += '<img class="product" src="' + productImg + '">';
-            comicsDiv += '<p class="pt-4">' + productName + '</p>';
+            comicsDiv += '<img class="product" src="' + productImg + '" alt="' + productName + '" title="' + productName + '">';
+            comicsDiv += '<p class="pt-4" title="' + productName + '">' + productName + '</p>';
             comicsDiv += '</a>'
             comicsDiv += '<p class="pt-1">' + productPrice + '</p>';
             comicsDiv += '</div>';
@@ -41,8 +41,8 @@ document.addEventListener("DOMContentLoaded", async function(event) {
             let productPrice = '£' + prints[i].price;
             printsDiv += '<div class="product-box text-center col-2 pt-5 pb-5">';
             printsDiv += '<a href="./products/product">'
-            printsDiv += '<img class="product" src="' + productImg + '">';
-            printsDiv += '<p class="pt-4">' + productName + '</p>';
+            printsDiv += '<img class="product" src="' + productImg + '" alt="' + productName + '" title="' + productName + '">';
+            printsDiv += '<p class="pt-4" title="' + productName + '">' + productName + '</p>';
             printsDiv += '</a>'
             printsDiv += '<p class="pt-1">' + productPrice + '</p>';
             printsDiv += '</div>';
