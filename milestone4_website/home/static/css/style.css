@@ -226,9 +226,9 @@ th, td {
     font-size: 115%;
 }
 
-#checkout-button {
-    padding: 6% 11%;
-    font-size: 118%;
+.cart-buttons {
+    padding: 4% 8%;
+    font-size: 112%;
 }
 
 
@@ -256,7 +256,7 @@ label {
     font-size: 120%;
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=number] {
     border: #fecd95 2px solid;
     border-radius: 0.3rem;
 }
