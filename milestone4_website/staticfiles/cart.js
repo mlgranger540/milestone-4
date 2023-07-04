@@ -74,7 +74,6 @@ fetch("/orders/config/").then((result) => { return result.json(); }).then((data)
             return result.json();
         })
         .then((data) => {
-            console.log(data);
             return stripe.redirectToCheckout({sessionId: data.sessionId});
         })
     });
