@@ -69,7 +69,11 @@ fetch("/orders/config/").then((result) => { return result.json(); }).then((data)
             console.log(res);
             return res;
         })
-        .then((result) => { return result.json(); }).then((data) => {
+        .then((result) => {
+            console.log(result);
+            return result.json();
+        })
+        .then((data) => {
             console.log(data);
             return stripe.redirectToCheckout({sessionId: data.sessionId});
         })
