@@ -65,6 +65,10 @@ fetch("/orders/config/").then((result) => { return result.json(); }).then((data)
             method: "POST",
             body: `${stripeCartString}`
         })
+        .then((res) => {
+            console.log(res);
+            return res;
+        })
         .then((result) => { return result.json(); }).then((data) => {
             console.log(data);
             return stripe.redirectToCheckout({sessionId: data.sessionId});
