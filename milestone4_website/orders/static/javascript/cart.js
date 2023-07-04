@@ -46,3 +46,31 @@ window.onload = (event) => {
     let clearCartButton = document.getElementById("clear-cart-button");
     clearCartButton.addEventListener("click", clearCart);
 }
+
+fetch("/orders/config/").then((result) => { return result.json(); }).then((data) => {
+    const stripe = Stripe(data.publicKey);
+    let cart = JSON.parse(sessionStorage.getItem("cart-items"));
+    let stripeCart = [];
+    for (let i in cart){
+        let item = {};
+        item.price = cart[i].price_id;
+        item.quantity = Number(cart[i].quantity);
+        stripeCart.push(item);
+    };
+    let stripeCartString = JSON.stringify(stripeCart);
+    console.log(stripeCartString);
+
+    document.querySelector("#checkout-button").addEventListener("click", () => {
+        fetch("/orders/create-checkout-session/",{
+            method: "POST",
+            body: `${stripeCartString}`
+        })
+        .then((result) => { return result.json(); }).then((data) => {
+            console.log(data);
+            return stripe.redirectToCheckout({sessionId: data.sessionId});
+        })
+        .then((res) => {
+            console.log(res);
+        });
+    });
+});
