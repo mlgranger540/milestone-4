@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from users.models import User
 from orders.models import Order
 from products.models import Product
@@ -133,5 +134,7 @@ class SuccessView(TemplateView):
 class CancelledView(TemplateView):
     template_name = 'cancelled.html'
 
+@method_decorator(login_required, name='dispatch')
 class CartPageView(TemplateView):
-    template_name = 'cart.html'
+    def get(self, request):
+        return render(request, 'cart.html')
