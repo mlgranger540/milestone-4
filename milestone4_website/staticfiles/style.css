@@ -276,6 +276,16 @@ ul {
     font-size: 120%;
 }
 
+#logout-button {
+    float: right;
+    padding: 2% 3%;
+    font-size: 105%;
+}
+
+#logout {
+    border: none;
+}
+
 
 /* Footer */
 #footer {
@@ -286,4 +296,5 @@ ul {
 .social-buttons {
     font-size: 140%;
     text-shadow: #fbd9d4 3px 3px 3px;
+    border: none;
 }
