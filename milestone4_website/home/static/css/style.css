@@ -300,5 +300,8 @@ ul {
 .social-buttons {
     font-size: 140%;
     text-shadow: #fbd9d4 3px 3px 3px;
-    border: none;
+}
+
+.social-buttons:hover {
+    border-bottom: none;
 }
