@@ -55,7 +55,14 @@ document.addEventListener("DOMContentLoaded", async function(event) {
             modalTrigger.click();
         };
 
+        function goToCart() {
+            window.location.pathname = "/orders/cart";
+        }
+
         let addToCartButton = document.getElementById("add-to-cart-button");
         addToCartButton.addEventListener("click", addItemToCart);
+
+        let goToCartButton = document.getElementById("go-to-cart");
+        goToCartButton.addEventListener("click", goToCart)
     })
 });

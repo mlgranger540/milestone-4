@@ -243,8 +243,13 @@ th, td {
     font-size: 145%;
 }
 
-#modal-close-2 {
+#modal-close-2, #go-to-cart {
     border: none;
+    padding: 2% 4%;
+}
+
+#go-to-cart {
+    color: #957572;
 }
 
 
