@@ -72,6 +72,7 @@ def create_checkout_session(request):
             return JsonResponse({'sessionId': checkout_session['id']})
         except Exception as e:
             return JsonResponse({'error': str(e)})
+
 @csrf_exempt
 def stripe_webhook(request):
     endpoint_secret = os.getenv("STRIPE_ENDPOINT_SECRET")
