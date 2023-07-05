@@ -51,9 +51,11 @@ document.addEventListener("DOMContentLoaded", async function(event) {
             array.push(productObject);
             sessionStorage.setItem("cart-items", JSON.stringify(array));
             console.log("Added");
+            let modalTrigger = document.getElementById("response-modal-trigger");
+            modalTrigger.click();
         };
 
         let addToCartButton = document.getElementById("add-to-cart-button");
         addToCartButton.addEventListener("click", addItemToCart);
-    })    
+    })
 });

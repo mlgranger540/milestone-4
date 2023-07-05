@@ -90,6 +90,23 @@
                 <div class="product-box-end col-2"></div>
             </div>
         </div>
+        <button type="button" id="response-modal-trigger" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#response-modal" hidden>Modal</button>
+        <div id="response-modal" class="modal fade" data-bs-keyboard="false" tabindex="-1" aria-labelledby="request-success" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="request-success" class="modal-title mt-3 ms-3">Yay!</h2>
+                        <button type="button" id="modal-close-1" class="btn-close mt-3 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="ms-3">Item added to cart!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="modal-close-2" class="btn btn-secondary mb-3 me-3" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <footer>

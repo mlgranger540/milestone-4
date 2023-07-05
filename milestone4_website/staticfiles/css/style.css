@@ -235,6 +235,18 @@ th, td {
     font-size: 112%;
 }
 
+.modal-header, .modal-body, .modal-footer {
+    border: none;
+}
+
+#request-success {
+    font-size: 145%;
+}
+
+#modal-close-2 {
+    border: none;
+}
+
 
 /* Contact */
 
