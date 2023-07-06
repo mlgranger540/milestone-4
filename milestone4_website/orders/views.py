@@ -129,9 +129,12 @@ def stripe_webhook(request):
 
 def get_orders(request, username):
     current_user = request.user
-    order_obj = Order.objects.get(user = current_user)
-    stripe_invoice = stripe.Invoice.retrieve(order_obj.stripe_invoice_id)
-    return HttpResponse(json.dumps(stripe_invoice), content_type='application/json')
+    orderObjs = Order.objects.filter(user = current_user)
+    invoices = []
+    for obj in orderObjs: 
+        stripe_invoice = stripe.Invoice.retrieve(obj.stripe_invoice_id)
+        invoices.append(stripe_invoice)
+    return HttpResponse(json.dumps(invoices), content_type='application/json')
 
 
 class SuccessView(TemplateView):

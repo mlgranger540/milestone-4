@@ -307,6 +307,10 @@ ul {
     border: none;
 }
 
+.capitalise {
+    text-transform: capitalize;
+}
+
 
 /* Footer */
 #footer {

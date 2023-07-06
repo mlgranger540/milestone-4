@@ -74,29 +74,28 @@
                     <h4 class="pt-4 pb-4">Orders</h4>
                     <div class="col-12">
                         <table>
-                            <tr>
-                                <th class="table-heading text-center col-4 pt-3 pb-2" colspan="2">Product</th>
-                                <th class="table-heading text-center col-1 pt-3 pb-2">Price</th>
-                                <th class="table-heading text-center col-1 pt-3 pb-2">Quantity</th>
-                                <th class="table-heading text-center col-1 pt-3 pb-2">Date</th>
-                                <th class="table-heading text-center col-1 pt-3 pb-2">Status</th>
-                            </tr>
-                            <tr>
-                                <td class="col-1 pt-1 pb-1">
-                                    <a href="#">
-                                        <img class="product" src="" alt="Queer Bros volume 1" title="Queer Bros vol. 1">
-                                    </a>
-                                </td>
-                                <td class="col-3 px-4 py-5">
-                                    <a href="#">
-                                        <p title="Queer Bros vol. 1" class="pt-4">Queer Bros vol. 1</p>
-                                    </a>
-                                </td>
-                                <td class="col-1 px-4 py-5">£8.99</td>
-                                <td class="col-1 px-4 py-5">1</td>
-                                <td class="col-1 px-4 py-5">24/6/23</td>
-                                <td class="col-1 px-4 py-5">Dispatched</td>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <th class="table-heading text-center col-5 pt-3 pb-2" colspan="3">Products</th>
+                                    <th class="table-heading text-center col-1 pt-3 pb-2">Total</th>
+                                    <th class="table-heading text-center col-1 pt-3 pb-2">Date</th>
+                                    <th class="table-heading text-center col-1 pt-3 pb-2">Status</th>
+                                </tr> 
+                            </thead>
+                            <tbody id="orders-table-body">
+                                <tr>
+                                    <td class="col-3 px-3 py-5">
+                                        <a href="#">
+                                            <p title="Queer Bros vol. 1" class="px-2">Queer Bros vol. 1</p>
+                                        </a>
+                                    </td>
+                                    <td class="col-1 px-3 py-5">1</td>
+                                    <td class="col-1 px-3 py-5">£8.99</td>
+                                    <td class="col-1 px-3 py-5">£8.99</td>
+                                    <td class="col-1 px-3 py-5">24/6/23</td>
+                                    <td class="col-1 px-3 py-5">Dispatched</td>
+                                </tr>
+                            </tbody>
                         </table>
                         <button id="logout-button" class="m-4" type="button">
                             <a id="logout" href="{% url 'logout' %}">Log Out</a>
