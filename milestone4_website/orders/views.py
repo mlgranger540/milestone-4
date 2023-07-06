@@ -126,7 +126,13 @@ def stripe_webhook(request):
         print("Payment was successful.")
 
     return HttpResponse(status=200)
-        
+
+def get_orders(request, username):
+    current_user = request.user
+    order_obj = Order.objects.get(user = current_user)
+    stripe_invoice = stripe.Invoice.retrieve(order_obj.stripe_invoice_id)
+    return HttpResponse(json.dumps(stripe_invoice), content_type='application/json')
+
 
 class SuccessView(TemplateView):
     template_name = 'success.html'

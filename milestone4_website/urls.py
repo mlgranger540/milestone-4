@@ -23,11 +23,11 @@ import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("accounts/", include("django.contrib.auth.urls")),  # new
-    path("users/", include("users.urls")),
-    path("products/", include("products.urls")),
-    path("orders/", include("orders.urls")),
-    path('', include("home.urls"))
+    path('accounts/', include('django.contrib.auth.urls')),  # new
+    path('users/', include('users.urls')),
+    path('products/', include('products.urls')),
+    path('orders/', include('orders.urls')),
+    path('', include('home.urls'))
 ]
 #static
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
