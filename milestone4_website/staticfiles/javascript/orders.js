@@ -1,22 +1,32 @@
 document.addEventListener("DOMContentLoaded", async function(event) {
     await fetch(`/orders/${document.getElementById("options-username").innerHTML}`,{method:"GET"}).then(response => response.json()).then((data)=>{
         console.log(data);
+        let uniqueIDs = {};
+        let newData = [];
+        data.forEach((order)=>{
+            if (!uniqueIDs[order.id]) {
+              uniqueIDs[order.id] = true;
+              newData.push(order);
+            }
+        });
+        newData.sort((a, b)=>{return b.created - a.created});
+        console.log(newData);
 
         let orders = []
-        for (let i in data){
+        for (let i in newData){
             let orderObj = {}
-            let totalPrice = "£" + (data[i].amount_paid/100);
-            let fullDate = new Date(data[i].created*1000);
+            let totalPrice = "£" + (newData[i].amount_paid/100);
+            let fullDate = new Date(newData[i].created*1000);
             let day = fullDate.getDate();
             let month = fullDate.getMonth() + 1;
             let year = fullDate.getFullYear();
             let dateCreated = day + "/" + month + "/" + year;
-            let status = data[i].status;
+            let status = newData[i].status;
             orderObj.totalPrice = totalPrice;
             orderObj.dateCreated = dateCreated;
             orderObj.status = status;
 
-            let line_items = data[i].lines.data;
+            let line_items = newData[i].lines.data;
             let items = [];
             for (let j in line_items){
                 let itemObj = {};
