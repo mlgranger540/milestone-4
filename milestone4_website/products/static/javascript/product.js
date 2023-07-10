@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", async function(event) {
 
         let addToCartButton = document.getElementById("add-to-cart-button");
         addToCartButton.addEventListener("click", addItemToCart);
+        addToCartButton.disabled = false;
 
         let goToCartButton = document.getElementById("go-to-cart");
         goToCartButton.addEventListener("click", goToCart)

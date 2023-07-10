@@ -160,6 +160,19 @@ h2 {
 
 /* Product Display */
 
+.loading {
+    font-size: 130%;
+}
+
+button:disabled {
+    background-image: linear-gradient(#ddb198, #e6d0b8);
+    color: #7d7d7d;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
 .product-box {
     border-top: #fecd95 3px solid;
     border-bottom: #fecd95 3px solid;

@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async function(event) {
             let productName = comics[i].name;
             let productPrice = '£' + comics[i].price;
             let productID = comics[i].db_id;
-            comicsDiv += '<div class="product-box text-center col-2 pt-5 pb-5">';
+            comicsDiv += '<div class="product-box text-center col-2 py-5">';
             comicsDiv += '<a href="./products/' + productID + '">';
             comicsDiv += '<img class="product" src="' + productImg + '" alt="' + productName + '" title="' + productName + '">';
             comicsDiv += '<p class="pt-4" title="' + productName + '">' + productName + '</p>';

@@ -10,11 +10,26 @@ function clearCart() {
     let cartTable = document.getElementById("cart-table-body");
     cartTable.innerHTML = "[]";
     console.log("Cart cleared");
+    window.location.reload();
 };
+
+function removeFromCart(element) {
+    let itemID = element.id;
+    let cartItems = getCart();
+    let newCartItems = cartItems.filter(function idCheck(item) {
+        return item.id !== itemID;
+    });
+    console.log(newCartItems);
+    sessionStorage.removeItem("cart-items");
+    sessionStorage.setItem("cart-items", JSON.stringify(newCartItems));
+    updateCartOnPage();
+}
 
 function updateCartOnPage() {
     console.log("Updating cart...");
     let cartTableBody = document.getElementById("cart-table-body");
+    let clearCartButton = document.getElementById("clear-cart-button");
+    let checkoutButton = document.getElementById("checkout-button");
     let newBody = "<tbody>";
     let cartItems = getCart();
     if (cartItems == undefined) {
@@ -31,12 +46,19 @@ function updateCartOnPage() {
             newBody += '<td class="col-3 px-4 py-5">' + x.description + '</td>';
             newBody += '<td class="col-1 px-4 py-5">' + x.price + '</td>';
             newBody += '<td class="col-1 px-4 py-5">' + x.quantity + '</td>';
-            newBody += '<td class="col-1 px-4 py-5">Remove</td>';
-            newBody += '</tr>';
+            newBody += '<td class="col-1 px-4 py-5">';
+            newBody += '<a id="' + x.id + '" class="clickable" onclick="removeFromCart(this)">Remove</a>';
+            newBody += '</td></tr>';
+            clearCartButton.disabled = false;
+            checkoutButton.disabled = false;
         });
     };
     newBody += "</tbody>";
     cartTableBody.innerHTML = newBody;
+    if (cartTableBody.innerHTML === ""){
+        clearCartButton.disabled = true;
+        checkoutButton.disabled = true;
+    }
     console.log("Cart updated");
 };
 
