@@ -74,10 +74,8 @@ View the live project [here](https://little-bit-queer-art-shop-bed824a2914a.hero
 
 The layout and design of the website were first visualised using wireframes. HTML, CSS and Bootstrap were then used to recreate this design in code and build the UI of the website.
 
-<img width="50%" src="./readme-images/wireframes/home-wireframe.png" alt="Home Wireframe">
-<img width="41%" src="./readme-images/wireframes/profile-wireframe.png" alt="Profile Wireframe">
-<img width="40.5%" src="./readme-images/wireframes/shop-wireframe.png" alt="Shop Wireframe">
-<img width="50.5%" src="./readme-images/wireframes/cart-wireframe.png" alt="Cart Wireframe">
+<img width="55%" src="./readme-images/wireframes/home-wireframe.png" alt="Home Wireframe"><img width="45%" src="./readme-images/wireframes/profile-wireframe.png" alt="Profile Wireframe">
+<img width="44.4%" src="./readme-images/wireframes/shop-wireframe.png" alt="Shop Wireframe"><img width="55.6%" src="./readme-images/wireframes/cart-wireframe.png" alt="Cart Wireframe">
 
 ### Database
 
