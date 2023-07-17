@@ -2,7 +2,7 @@
 
 This project is an online shop for an independent artist to sell their work. It is a Django project consisting of multiple apps and backed by a relational PostgreSQL database which stores user, product and order information. Payments and orders are handled by Stripe. The final project is hosted on Heroku.
 
-![Little Bit Queer Art Shop Homepage](/readme-images/screenshots/home.png)
+![Little Bit Queer Art Shop Homepage](./readme-images/screenshots/home.png)
 
 View the live project [here](https://little-bit-queer-art-shop-bed824a2914a.herokuapp.com/).
 
@@ -42,15 +42,23 @@ View the live project [here](https://little-bit-queer-art-shop-bed824a2914a.hero
 
 ### Header, Footer and Navigation
 
-![Header and Nav](/readme-images/screenshots/header-and-nav.png)
+![Header and Nav](./readme-images/screenshots/header-and-nav.png)
 
-![Footer](/readme-images/screenshots/footer.png)
+The header of the website features the logo for the site and log in/profile and cart buttons. When not logged in, the log in/profile button shows the text 'Log In' and will take the user to the login page. Once logged in, this link will change to show the user's username, and take them to their profile when clicked. The cart is also not accessible without being logged in and will redirect the user to log in (or make an account) first.
+
+Beneath this is the navbar, which has links to the homepage, shop, and the contact page. The current page is indicated with a line at the bottom of the tab. This line also appears when the tabs are hovered over, as well as the text colour changing when the links are hovered over.
+
+At the bottom of each page is a simple footer containing social media links.
+
+![Footer](./readme-images/screenshots/footer.png)
 
 ### Landing Page - About and New Products
 
-![About](/readme-images/screenshots/about.png)
+On the landing page, visitors are met with a simple about section, which gives a brief overview of the site's origin and purpose.
 
-![New Products](/readme-images/screenshots/new-products.png)
+![About](./readme-images/screenshots/about.png)
+
+![New Products](./readme-images/screenshots/new-products.png)
 
 ### Shop Page
 
@@ -143,8 +151,6 @@ I referred to the [Django docs](https://docs.djangoproject.com/en/4.2/intro/tuto
 
 I used this [guidance from Heroku](https://devcenter.heroku.com/articles/django-app-configuration) to help when trying to deploy my Django app.
 
-### Content
+### Content and Media
 
-### Media
-
-All images were drawn by myself.
+All written content and images used on the website and products were created by myself.
