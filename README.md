@@ -1,8 +1,10 @@
 # The Little Bit Queer Art Shop
 
-This project is an online shop for an independent artist to sell their work. It is backed by a relational database which stores user, product and order information. The final project is hosted on Heroku.
+This project is an online shop for an independent artist to sell their work. It is a Django project consisting of multiple apps and backed by a relational PostgreSQL database which stores user, product and order information. Payments and orders are handled by Stripe. The final project is hosted on Heroku.
 
-View the live project [here](https://little-bit-queer-art-shop-bed824a2914a.herokuapp.com/)
+![Little Bit Queer Art Shop Homepage](/readme-images/screenshots/home.png)
+
+View the live project [here](https://little-bit-queer-art-shop-bed824a2914a.herokuapp.com/).
 
 ---
 
@@ -38,11 +40,25 @@ View the live project [here](https://little-bit-queer-art-shop-bed824a2914a.hero
 
 ## Features
 
+### Homepage
 
+
+### Improvements and Features to Add
 
 ---
 
 ## Design and Planning
+
+### Website
+
+The layout and design of the website were first visualised using wireframes. HTML, CSS and Bootstrap were then used to recreate this design in code and build the UI of the website.
+
+<img width="54.4%" src="./readme-images/wireframes/home-wireframe.png" alt="Home Wireframe">
+<img width="44.5%" src="./readme-images/wireframes/profile-wireframe.png" alt="Profile Wireframe">
+<img width="43.9%" src="./readme-images/wireframes/shop-wireframe.png" alt="Shop Wireframe">
+<img width="55.1%" src="./readme-images/wireframes/cart-wireframe.png" alt="Cart Wireframe">
+
+### Database
 
 ---
 
@@ -72,6 +88,18 @@ View the live project [here](https://little-bit-queer-art-shop-bed824a2914a.hero
 
 ### User Experience
 
+My project was tested by myself and others throughout its development to ensure that all aspects of the application work as intended.
+
+- All navigation links/buttons have been tested to ensure they go to the correct locations
+- Products displayed on the home and shop pages show the correct information retrieved from Stripe and the database
+- When a product link is clicked, the following page loads in the data from the selected product correctly
+- Add to cart button adds the selected product and quantity to the cart, though there is sometimes a bug if the cart has not been correctly cleared (see known bugs below)
+- As users are required to be logged in to buy items, attempts to access the cart page while not logged in bounce the user to the log in page. Originally users were able to access the cart page before logging in which would then cause an error if they attempted to checkout, so as part of testing I rectified this.
+- The profile page also redirects the user to the login page if they are not logged in to avoid users being able to access this page without being logged into an account.
+- The logged in user's past orders are correctly displayed on their profile with no duplicates or other user's orders
+- Log out button logs current user out successfully
+- No plain text passwords are stored in the database to avoid exposing sensitive information
+
 ### Responsiveness
 
 ### Validation
@@ -91,6 +119,10 @@ There is sometimes a bug with the cart where if the cart page has not been refre
 ## Credits
 
 ### Code
+
+I referred to the [Django docs](https://docs.djangoproject.com/en/4.2/intro/tutorial01/) to help when setting up my project, as well as this [guide](https://www.enterprisedb.com/postgres-tutorials/how-use-postgresql-django) to help with connecting this to the database.
+
+I used this [guidance from Heroku](https://devcenter.heroku.com/articles/django-app-configuration) to help when trying to deploy my Django app.
 
 ### Content
 
