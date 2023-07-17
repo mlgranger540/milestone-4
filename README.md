@@ -40,8 +40,29 @@ View the live project [here](https://little-bit-queer-art-shop-bed824a2914a.hero
 
 ## Features
 
-### Homepage
+### Header, Footer and Navigation
 
+![Header and Nav](/readme-images/screenshots/header-and-nav.png)
+
+![Footer](/readme-images/screenshots/footer.png)
+
+### Landing Page - About and New Products
+
+![About](/readme-images/screenshots/about.png)
+
+![New Products](/readme-images/screenshots/new-products.png)
+
+### Shop Page
+
+### Product Page
+
+### Cart
+
+### Stripe Checkout
+
+### Sign Up, Log In and Profile
+
+### Contact Page
 
 ### Improvements and Features to Add
 
@@ -53,10 +74,10 @@ View the live project [here](https://little-bit-queer-art-shop-bed824a2914a.hero
 
 The layout and design of the website were first visualised using wireframes. HTML, CSS and Bootstrap were then used to recreate this design in code and build the UI of the website.
 
-<img width="54.4%" src="./readme-images/wireframes/home-wireframe.png" alt="Home Wireframe">
-<img width="44.5%" src="./readme-images/wireframes/profile-wireframe.png" alt="Profile Wireframe">
-<img width="43.9%" src="./readme-images/wireframes/shop-wireframe.png" alt="Shop Wireframe">
-<img width="55.1%" src="./readme-images/wireframes/cart-wireframe.png" alt="Cart Wireframe">
+<img width="54%" src="./readme-images/wireframes/home-wireframe.png" alt="Home Wireframe">
+<img width="44%" src="./readme-images/wireframes/profile-wireframe.png" alt="Profile Wireframe">
+<img width="43.5%" src="./readme-images/wireframes/shop-wireframe.png" alt="Shop Wireframe">
+<img width="54.5%" src="./readme-images/wireframes/cart-wireframe.png" alt="Cart Wireframe">
 
 ### Database
 
