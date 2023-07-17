@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", async function(event) {
     await fetch(`/products/product/${window.location.pathname[10]}/`,{method:"GET"}).then(response => response.json()).then((data)=>{
-        // Get selected product
-        console.log(data);
-        
+        // Get selected product info
         let productImg = data.images;
         let productName = data.name;
         let productPrice = '£' + data.price;
@@ -27,14 +25,13 @@ document.addEventListener("DOMContentLoaded", async function(event) {
         document.getElementById("product-info-div").innerHTML = productInfoDiv;
 
 
+        // Function to get cart items from session storage
         function getCart() {
-            console.log("Getting cart");
-            console.log(JSON.parse(sessionStorage.getItem("cart-items")));
             return JSON.parse(sessionStorage.getItem("cart-items"));
         };
 
+        // Function to add item to cart using session storage
         function addItemToCart() {
-            console.log("Adding to cart...");
             let array = getCart();
             let quantity = document.getElementById("quantity").value;
             let productObject = {
@@ -47,18 +44,19 @@ document.addEventListener("DOMContentLoaded", async function(event) {
                 "db_id": databaseID,
                 "price_id": priceID
             };
-            console.log(productObject);
             array.push(productObject);
             sessionStorage.setItem("cart-items", JSON.stringify(array));
-            console.log("Added");
+            // Trigger modal to inform user item has been added
             let modalTrigger = document.getElementById("response-modal-trigger");
             modalTrigger.click();
         };
 
+        // Function to take user to cart page
         function goToCart() {
             window.location.pathname = "/orders/cart";
         }
 
+        // Add event listeners to buttons
         let addToCartButton = document.getElementById("add-to-cart-button");
         addToCartButton.addEventListener("click", addItemToCart);
         addToCartButton.disabled = false;

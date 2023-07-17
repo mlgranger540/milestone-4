@@ -1,6 +1,7 @@
+// User's orders/invoices are fetched using their username
 document.addEventListener("DOMContentLoaded", async function(event) {
     await fetch(`/orders/${document.getElementById("options-username").innerHTML}`,{method:"GET"}).then(response => response.json()).then((data)=>{
-        console.log(data);
+        // Duplicate orders are filtered out
         let uniqueIDs = {};
         let newData = [];
         data.forEach((order)=>{
@@ -9,9 +10,10 @@ document.addEventListener("DOMContentLoaded", async function(event) {
               newData.push(order);
             }
         });
+        // Orders are sorted by date created to show newest first
         newData.sort((a, b)=>{return b.created - a.created});
-        console.log(newData);
 
+        // New orders array is built from sorted + filtered data
         let orders = []
         for (let i in newData){
             let orderObj = {}
@@ -41,8 +43,8 @@ document.addEventListener("DOMContentLoaded", async function(event) {
             orderObj.items = items;
             orders.push(orderObj);
         }
-        console.log(orders);
 
+        // Orders table is populated with user's past orders
         let ordersTableBody = document.getElementById("orders-table-body");
         let newBody = "<tbody>";
         orders.forEach((x)=>{

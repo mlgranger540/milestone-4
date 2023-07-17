@@ -1,32 +1,30 @@
+// Function to get cart items from session storage
 function getCart() {
-    console.log("Getting cart");
-    console.log(JSON.parse(sessionStorage.getItem("cart-items")));
     return JSON.parse(sessionStorage.getItem("cart-items"));
 };
 
+// Function to clear all cart items from session storage
 function clearCart() {
-    console.log("Preparing to clear...")
     sessionStorage.removeItem("cart-items");
     let cartTable = document.getElementById("cart-table-body");
     cartTable.innerHTML = "[]";
-    console.log("Cart cleared");
     window.location.reload();
 };
 
+// Function to remove selected item from cart/session storage using its ID
 function removeFromCart(element) {
     let itemID = element.id;
     let cartItems = getCart();
     let newCartItems = cartItems.filter(function idCheck(item) {
         return item.id !== itemID;
     });
-    console.log(newCartItems);
     sessionStorage.removeItem("cart-items");
     sessionStorage.setItem("cart-items", JSON.stringify(newCartItems));
     updateCartOnPage();
 }
 
+// Function to update the cart table on page with items in storage
 function updateCartOnPage() {
-    console.log("Updating cart...");
     let cartTableBody = document.getElementById("cart-table-body");
     let clearCartButton = document.getElementById("clear-cart-button");
     let checkoutButton = document.getElementById("checkout-button");
@@ -35,6 +33,7 @@ function updateCartOnPage() {
     if (cartItems == undefined) {
         sessionStorage.setItem("cart-items", JSON.stringify([]));
     } else {
+        // Create table entry for each item in cart
         cartItems.forEach((x)=>{
             newBody += '<tr><td class="col-1 pt-1 pb-1">';
             newBody += '<a href="../../product/' + x.db_id + '">';
@@ -55,13 +54,14 @@ function updateCartOnPage() {
     };
     newBody += "</tbody>";
     cartTableBody.innerHTML = newBody;
+    // If cart is empty, clear cart and checkout buttons are disabled
     if (cartTableBody.innerHTML === ""){
         clearCartButton.disabled = true;
         checkoutButton.disabled = true;
     }
-    console.log("Cart updated");
 };
 
+// Update cart table and add event listener to clear button on page load
 window.onload = (event) => {
     updateCartOnPage();
 
@@ -69,6 +69,7 @@ window.onload = (event) => {
     clearCartButton.addEventListener("click", clearCart);
 }
 
+// Cart items price ID and quantity are stringified and passed to Stripe for checkout
 fetch("/orders/config/").then((result) => { return result.json(); }).then((data) => {
     const stripe = Stripe(data.publicKey);
     let cart = JSON.parse(sessionStorage.getItem("cart-items"));
@@ -80,7 +81,6 @@ fetch("/orders/config/").then((result) => { return result.json(); }).then((data)
         stripeCart.push(item);
     };
     let stripeCartString = JSON.stringify(stripeCart);
-    console.log(stripeCartString);
 
     document.querySelector("#checkout-button").addEventListener("click", () => {
         fetch("/orders/create-checkout-session/",{

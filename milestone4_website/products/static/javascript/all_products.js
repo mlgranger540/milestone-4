@@ -2,8 +2,6 @@ document.addEventListener("DOMContentLoaded", async function(event) {
     await fetch('/products/all',{method:"GET"}).then(response => response.json()).then((data)=>{
         // Get array of all products
         let actualData = data.data;
-        console.log(actualData);
-        console.log(actualData[1]);
         
         // Add product objects to array of comics or prints depending on type
         let comics = [];

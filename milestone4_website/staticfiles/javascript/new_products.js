@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", async function(event) {
     await fetch('/products/all',{method:"GET"}).then(response => response.json()).then((data)=>{
         // Get array of all products
         let actualData = data.data;
-        console.log(actualData);
 
         // Build and display div for newest 5 products
         let productsDiv = '<div class="row"><div class="product-box-start col-1"></div>';
