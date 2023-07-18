@@ -128,7 +128,8 @@ The layout and design of the website were first visualised using wireframes. HTM
 - [Git](https://git-scm.com/) for version control
 - [GitHub](https://github.com/) to store the project repository and back up git commits
 - [Bootstrap v5.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/) to assist in creating the structure and design of the webpages
-- [Font Awesome](https://fontawesome.com/) for the icons
+- [Google Fonts](https://fonts.google.com/) for the logo font
+- [Font Awesome](https://fontawesome.com/) for the social media, cart, user and heart icons
 - [Justinmind](https://www.justinmind.com/) to create the wireframes
 - [Clip Studio Paint](https://www.clipstudio.net/en/) to create the artwork and cloud for the logo
 
@@ -177,3 +178,5 @@ I used this [guidance from Heroku](https://devcenter.heroku.com/articles/django-
 ### Content and Media
 
 All written content and images used on the website and products were created by myself.
+
+[Google fonts](https://fonts.google.com/) for the logo font and [Font Awesome](https://fontawesome.com/) for the icons

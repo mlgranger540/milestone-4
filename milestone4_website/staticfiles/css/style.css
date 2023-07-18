@@ -41,18 +41,12 @@ a:hover {
 /* Header */
 
 #header {
-    /* background-color: #ffeadd; */
-    /* background-color: #f8bb76; */
-    /* background-color: #f8a676; */
     background-color: #ffbd88;
     background-image: linear-gradient(#f8a676, #fecd95);
     padding-top: 0.15%;
 }
 
 #title {
-    /* background-color: #fff2ee; */
-    /* background-color: #faeae7; */
-    /* background-color: #ecb9b9; */
     background: url(./images/cloud.png) center center / 100% 135% no-repeat;
     padding: 0.65% 0;
 }
@@ -61,11 +55,6 @@ h1, h2 {
     font-family: 'Delicious Handrawn', cursive;
     font-weight: 100;
     letter-spacing: 0.4px;
-    /* color: #ffeadf; */
-    /* color: #edb65f; */
-    /* color: #e8ab49; */
-    /* color: #a37d79; */
-    /* color: #d77d73; */
     color: #eb8075;
     text-align: center;
     text-shadow: #b79b97 1px 1px 1px;
@@ -92,20 +81,14 @@ h2 {
 }
 
 .colour-1 {
-    /* color: #dab667; */
-    /* color: #e7786b; */
     color: #eb819a;
 }
 
 .colour-2 {
-    /* color: #a37d79; */
-    /* color: #e7786b; */
-    /* color: #a37faf; */
     color: #a47fb0;
 }
 
 .colour-3 {
-    /* color: #ca9073; */
     color: #d89a7a;
 }
 
@@ -211,6 +194,7 @@ button:disabled {
     width: 100%;
 }
 
+
 /* Product Page */
 
 .price {
@@ -300,6 +284,7 @@ input[type=text], input[type=password], input[type=number] {
     font-size: 118%;
 }
 
+
 /* Profile */
 
 ul {
@@ -326,6 +311,7 @@ ul {
 
 
 /* Footer */
+
 #footer {
     background-color: #ffbd88;
     background-image: linear-gradient(#fecd95, #f8a676);
