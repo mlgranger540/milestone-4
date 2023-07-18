@@ -58,21 +58,44 @@ On the landing page, visitors are met with a simple about section, which gives a
 
 ![About](./readme-images/screenshots/about.png)
 
+Beneath this is a product gallery showing the newest products that have been added to the shop. This is achieved by using a Fetch request to get all the products that have been added to the database through Stripe, then creating divs with the information for the five newest products and displaying these on the page. The 'See all' link below the product gallery will take the user to the shop page to view all the available products.
+
 ![New Products](./readme-images/screenshots/new-products.png)
 
 ### Shop Page
 
+![Shop Page - Comics](./readme-images/screenshots/shop-comics.png)
+
+![Shop Page - Prints](./readme-images/screenshots/shop-prints.png)
+
 ### Product Page
+
+![Product Page](./readme-images/screenshots/product.png)
+
+![Added to Cart](./readme-images/screenshots/added-to-cart.png)
 
 ### Cart
 
+![Cart](./readme-images/screenshots/cart.png)
+
 ### Stripe Checkout
 
-### Sign Up, Log In and Profile
+![Stripe Checkout](./readme-images/screenshots/stripe-checkout-censored.png)
+
+### Log In, Sign Up and Profile
+
+![Log In](./readme-images/screenshots/login.png)
+
+![Profile](./readme-images/screenshots/profile-censored.png)
 
 ### Contact Page
 
+![Contact](./readme-images/screenshots/contact.png)
+
 ### Improvements and Features to Add
+
+- A nice feature to add would be to have the app send out a confirmation email to the customer when an order has been placed. This was a feature I looked at adding but didn't have time to implement in the end.
+- It would also be nice to have a more customised sign up form rather than the default Django one, but I had to prioritise focus on other aspects on the app's design.
 
 ---
 
