@@ -44,9 +44,9 @@ View the live project [here](https://little-bit-queer-art-shop-bed824a2914a.hero
 
 ![Header and Nav](./readme-images/screenshots/header-and-nav.png)
 
-The header of the website features the logo for the site and log in/profile and cart buttons. When not logged in, the log in/profile button shows the text 'Log In' and will take the user to the login page. Once logged in, this link will change to show the user's username, and take them to their profile when clicked. The cart is also not accessible without being logged in and will redirect the user to log in (or make an account) first.
+The header of the website features the logo for the site and log in/profile and cart buttons. When not logged in, the log in/profile button shows the text 'Log In' and will take the user to the login page. Once logged in, this link will change to show the user's username and take them to their profile. The cart is also not accessible without being logged in and will redirect the user to log in first.
 
-Beneath this is the navbar, which has links to the homepage, shop, and the contact page. The current page is indicated with a line at the bottom of the tab. This line also appears when the tabs are hovered over, as well as the text colour changing when the links are hovered over.
+Beneath this is the navbar, which has links to the homepage, shop, and contact page. The current page is indicated with a line at the bottom of the tab. This line also appears when the tabs/links are hovered over, as well as the text colour changing.
 
 At the bottom of each page is a simple footer containing social media links.
 
@@ -58,13 +58,13 @@ On the landing page, visitors are met with a simple about section, which gives a
 
 ![About](./readme-images/screenshots/about.png)
 
-Beneath this is a product gallery showing the newest products that have been added to the shop. This is achieved by using a Fetch request to get all the products that have been added to the database through Stripe, then creating divs with the information for the five newest products and displaying these on the page. The 'See all' link below the product gallery will take the user to the shop page to view all the available products.
+Beneath this is a product gallery showing the newest products added to the shop. This is achieved by using a Fetch request to get all the products that have been added to the database through Stripe, then creating divs with the information for the five newest products and displaying these on the page. The 'See all' link below the product gallery will take the user to the shop page to view all available products.
 
 ![New Products](./readme-images/screenshots/new-products.png)
 
 ### Shop Page
 
-The shop page shows all the products available to buy on the website, sorted into comics and prints. This is done by Fetching all products from the database, then sorting them into two new arrays according to type, before building divs from the information in the arrays and displaying them to the page.
+The shop page shows all the products available to buy on the website, sorted into comics and prints. This is done by Fetching all products from the database, then sorting them into two new arrays according to type, before building and displaying divs with the product information in each array.
 
 ![Shop Page - Comics](./readme-images/screenshots/shop-comics.png)
 
@@ -72,37 +72,37 @@ The shop page shows all the products available to buy on the website, sorted int
 
 ### Product Page
 
-When the product name or image is clicked on both the home or shop pages, the user is taken to the product page, which then loads in the information for the selected product from the database.
+When the product name or image is clicked on both the home or shop pages, the user is taken to the product page, which loads in the information for the selected product from the database.
 
 ![Product Page](./readme-images/screenshots/product.png)
 
-The user is able to choose a quantity of the product and add it to their cart with the 'Add to Cart' button. This button retrieves any items already in the cart from the session storage as an array of objects, adds the new item and quantity to it, then updates the cart in session storage with the new array of product objects. The button is disabled while the product information is loading.
+The user is able to choose a quantity of the product and add it to their cart. The 'Add to Cart' button retrieves any items already in the cart from the session storage as an array of objects, adds the new item and quantity to it, then updates the cart in session storage with the new array. The button is disabled while the product information is loading.
 
 If the item has been successfully added, a modal is shown to indicate this to the user.
 
 ![Added to Cart](./readme-images/screenshots/added-to-cart.png)
 
-From here the user can either close the modal and continue adding to their cart, or press the 'Go to Cart' button to view their cart and checkout.
+From here the user can either close the modal and continue shopping, or use the 'Go to Cart' button to view their cart and checkout.
 
 ### Cart
 
-The cart page requires the user to be logged in; if they are not, they will be redirected to the login page before proceeding, where they can make an account if not signed up or log in if they are.
+The cart page requires the user to be logged in; if they are not, they will be redirected to the login page before proceeding, where they can make an account if needed and then log in.
 
 Once logged in, users will be able to view the items in their cart along with the quantity selected. This is achieved by retrieving the cart from session storage on page load and creating a table entry for each item.
 
 ![Cart](./readme-images/screenshots/cart.png)
 
-If the user changes their mind about any items in their order, they can remove an item from their cart with the 'Remove' button, which uses the product ID to remove the selected product from the array of objects added to session storage. Alternatively they can clear their cart entirely with the 'Clear Cart' button. The cart will also be cleared if the user closes the tab or their browser, as session storage is cleared when the session is closed.
+If the user changes their mind about an item in their order, they can remove it from their cart with the 'Remove' button, which uses the product ID to remove the selected product from the array of objects added to session storage. Alternatively they can clear their cart entirely with the 'Clear Cart' button. The cart will also be cleared if the user closes the tab or their browser, as session storage is cleared when the session is closed.
 
 When the user is happy with their order and ready to proceed to payment, they can click the 'Checkout' button. Both these buttons are disabled if the cart is empty.
 
 ### Stripe Checkout
 
-When clicked, the checkout button will create a Stripe checkout session, providing the price ID and quantity of the items selected in a stringified array. The user will then be able to enter their card details or use another payment method to purchase their chosen items, creating an invoice in Stripe with the order details. A webhook listens for this event and adds an order entry to the database once payment has been received.
+The checkout button creates a Stripe checkout session, providing the price ID and quantity of the items selected in a stringified array. The user will then be able to enter their card details or use another payment method to purchase their chosen items, creating an invoice in Stripe with the order details. A webhook listens for this event and adds an order entry to the database once the order has been completed.
 
 ![Stripe Checkout](./readme-images/screenshots/stripe-checkout-censored.png)
 
-If the payment has been completed successfully, the user will be redirected to a success page to inform them of this - or alteratively a cancelled page if the payment was not completed. From here they can return to the site homepage.
+If the payment has been completed successfully, the user will be redirected to a success page - or a cancelled page if the payment was not completed. From here they can return to the site homepage.
 
 ### Log In, Sign Up and Profile
 
@@ -126,9 +126,9 @@ Finally, there is a simple contact page which shows the contact details and soci
 
 ### Improvements and Features to Add
 
-- A nice feature to add would be to have the app send out a confirmation email to the customer when an order has been placed. This was a feature I looked at adding but didn't have time to implement in the end.
+- A nice feature to add would be to have the app send a confirmation email to the customer when an order has been placed. This was a feature I looked at adding but didn't have time to implement in the end.
 - It would also be nice to have a more customised sign up form rather than the default Django one, but I had to prioritise focus on other aspects on the app's design.
-- Currently is it possible to add multiple instances of the same item to the cart, as they are not recognised as being duplicates of the same item. This also reveals a drawback with the way the 'Remove' button works, as it uses the product ID and therefore removes all instances of the product from the cart instead of just the one selected. Ideally, to avoid this, I would add some logic to check whether the item being added already exists in the cart, and if so, the item should not be added again and instead the new quantity of the product should be added to the existing quantity. This issue was only noted towards the end of the build however so there has not yet been time to implement this.
+- Currently is it possible to add multiple instances of the same item to the cart, as they are not recognised as being duplicates of the same item. This also reveals a drawback with the way the 'Remove' button works, as it uses the product ID and therefore removes all instances of the product from the cart instead of just the one selected. Ideally, to avoid this, I would add some logic to check whether the item being added already exists in the cart, and if so, the item should not be added again and instead the new quantity of the product should be added to the existing quantity. This issue was only noted towards the end of the build however so there was not time to implement this.
 
 ---
 
@@ -209,7 +209,7 @@ Stripe Checkout
 
 There is sometimes a bug with the cart where if the cart page has not been refreshed after clearing items, it throws an error when trying to add items to the cart again. To minimise this I added a line in the `clearCart()` function to force reload the page after clearing, however I still haven't solved the original bug so it might be possible to still encounter this error when trying to add to the cart.
 
-There seems to be an issue if the name supplied to Stripe when making a purchase does not match exactly with the name in the database.
+There seems to be an issue if the name supplied to Stripe when making a purchase does not match exactly with the name on the account in the database.
 
 ---
 
