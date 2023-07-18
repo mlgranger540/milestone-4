@@ -98,7 +98,7 @@ When the user is happy with their order and ready to proceed to payment, they ca
 
 ### Stripe Checkout
 
-When clicked, the checkout button will create a Stripe checkout session, providing the price ID and quantity of the items selected in a stringified array. The user will then be able to enter their card details or use another payment method to purchase their chosen items, creating an invoice in Stripe with the order details. A webhook listens for this event and adds an order entry to the database once payment has been completed successfully.
+When clicked, the checkout button will create a Stripe checkout session, providing the price ID and quantity of the items selected in a stringified array. The user will then be able to enter their card details or use another payment method to purchase their chosen items, creating an invoice in Stripe with the order details. A webhook listens for this event and adds an order entry to the database once payment has been received.
 
 ![Stripe Checkout](./readme-images/screenshots/stripe-checkout-censored.png)
 
@@ -113,6 +113,8 @@ The website contains a simple login page requiring a username and password, whic
 Once logged in, the user can visit their profile, which shows their personal details as supplied when they signed up or made a purchase, and a table containing their order history, including the price, date and status of the purchase, with the newest orders shown first.
 
 ![Profile](./readme-images/screenshots/profile-censored.png)
+
+These orders are retrieved from the database using the current user's username to get all past orders linked to their account. Duplicate invoice IDs are removed and the remaining orders are sorted according to date created. The desired order and product information is then pulled from the invoice and displayed in the table.
 
 There is also a button to log out of their account.
 
