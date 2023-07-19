@@ -18,39 +18,39 @@
 <body>
     <header>
         <div id="header" class="row">
-            <div class="col-4"></div>
-            <div id="title" class="col-4">
+            <div class="col-1 col-sm-3 col-lg-4"></div>
+            <div id="title" class="col-8 col-sm-6 col-lg-4">
                 <a href="./">
                     <h1><span class="tiny-font colour-1">The</span> <span class="med-font colour-2">Little</span> <span class="small-font colour-3">Bit</span> Queer</h1>
                     <h2><span class="med-font">Art</span> <span class="colour-2">Shop</span></h2>
                 </a>
             </div>
-            <div class="col-4">
+            <div class="col-3 col-lg-4">
                 <a href="./orders/cart">
-                    <i class="options fa-solid fa-cart-shopping mt-5 me-5"></i>
+                    <i class="options fa-solid fa-cart-shopping mt-5 me-2 me-sm-4 me-lg-5 pe-0 pe-sm-1 pe-md-2 pe-lg-0 pb-3"></i>
                 </a>
                 {% if user.is_authenticated %}
                 <a href="./users/profile">
-                    <i class="options fa-solid fa-user mt-5 me-5"></i>
+                    <i class="options fa-solid fa-user mt-5 me-3 me-sm-4 me-lg-5 pe-0 pe-sm-1 pe-md-2 pe-lg-0 pb-3"></i>
                 </a>
                 {% else %}
                 <a href="./accounts/login">
-                    <i class="options fa-solid fa-user mt-5 me-5"></i>
+                    <i class="options fa-solid fa-user mt-5 me-3 me-sm-4 me-lg-5 pe-0 pe-sm-1 pe-md-2 pe-lg-0 pb-3"></i>
                 </a>
                 {% endif %}
             </div>
         </div>
-        <nav id="header-nav" class="navbar navbar-expand-lg">
+        <nav id="header-nav" class="navbar navbar-expand-md">
             <div class="container-fluid justify-content-center">
                 <ul class="navbar-nav">
-                    <li class="nav-item item-start ps-5 pe-5">
-                        <a class="nav-link ps-4 pe-4" href="./">Home</a>
+                    <li class="nav-item item-start px-5">
+                        <a class="nav-link px-5 px-sm-4" href="./">Home</a>
                     </li>
-                    <li class="nav-item item-mid active ps-5 pe-5">
-                        <a class="nav-link ps-4 pe-4" href="./shop">Shop</a>
+                    <li class="nav-item item-mid active px-5">
+                        <a class="nav-link px-5 px-sm-4" href="./shop">Shop</a>
                     </li>
-                    <li class="nav-item item-end ps-5 pe-5">
-                        <a class="nav-link ps-4 pe-4" href="./contact">Contact</a>
+                    <li class="nav-item item-end px-5">
+                        <a class="nav-link px-5 px-sm-4" href="./contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -60,7 +60,7 @@
     <section>
         <div class="flex-container mb-5 pb-3">
             <div class="row">
-                <h3 class="text-center pt-5 pb-4">Shop</h3>
+                <h3 class="text-center pt-4 pt-sm-5 pb-4">Shop</h3>
             </div>
             <div class="row">
                 <div class="col-1"></div>
@@ -95,19 +95,19 @@
 
     <footer>
         <div id="footer" class="row pt-4 pb-4">
-            <div class="col-4"></div>
-            <div class="col-4 text-center pt-1 pb-1">
-                <a class="social-buttons ms-4 me-4" href="https://www.twitter.com" target="_blank">
+            <div class="col-1 col-sm-2"></div>
+            <div class="col-10 col-sm-8 py-1 text-center">
+                <a class="social-buttons mx-4" href="https://www.twitter.com" target="_blank">
                     <i class="fa-brands fa-twitter"></i>
                 </a>
-                <a class="social-buttons ms-4 me-4" href="https://www.instagram.com" target="_blank">
+                <a class="social-buttons mx-4" href="https://www.instagram.com" target="_blank">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
-                <a class="social-buttons ms-4 me-4" href="https://www.facebook.com" target="_blank">
+                <a class="social-buttons mx-4" href="https://www.facebook.com" target="_blank">
                     <i class="fa-brands fa-square-facebook"></i>
                 </a>
             </div>
-            <div class="col-4"></div>
+            <div class="col-1 col-sm-2"></div>
         </div>
     </footer>
 
