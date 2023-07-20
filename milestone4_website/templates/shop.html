@@ -26,15 +26,15 @@
                 </a>
             </div>
             <div class="col-3 col-lg-4">
-                <a href="./orders/cart">
+                <a href="./orders/cart" aria-label="Your cart">
                     <i class="options fa-solid fa-cart-shopping mt-5 me-2 me-sm-4 me-lg-5 pe-0 pe-sm-1 pe-md-2 pe-lg-0 pb-3"></i>
                 </a>
                 {% if user.is_authenticated %}
-                <a href="./users/profile">
+                <a href="./users/profile" aria-label="Your profile">
                     <i class="options fa-solid fa-user mt-5 me-3 me-sm-4 me-lg-5 pe-0 pe-sm-1 pe-md-2 pe-lg-0 pb-3"></i>
                 </a>
                 {% else %}
-                <a href="./accounts/login">
+                <a href="./accounts/login" aria-label="Log in">
                     <i class="options fa-solid fa-user mt-5 me-3 me-sm-4 me-lg-5 pe-0 pe-sm-1 pe-md-2 pe-lg-0 pb-3"></i>
                 </a>
                 {% endif %}
@@ -97,13 +97,13 @@
         <div id="footer" class="row pt-4 pb-4">
             <div class="col-1 col-sm-2"></div>
             <div class="col-10 col-sm-8 py-1 text-center">
-                <a class="social-buttons mx-4" href="https://www.twitter.com" target="_blank">
+                <a class="social-buttons mx-4" href="https://www.twitter.com" aria-label="Our Twitter page (opens in new tab)" target="_blank">
                     <i class="fa-brands fa-twitter"></i>
                 </a>
-                <a class="social-buttons mx-4" href="https://www.instagram.com" target="_blank">
+                <a class="social-buttons mx-4" href="https://www.instagram.com" aria-label="Our Instagram page (opens in new tab)" target="_blank">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
-                <a class="social-buttons mx-4" href="https://www.facebook.com" target="_blank">
+                <a class="social-buttons mx-4" href="https://www.facebook.com" aria-label="Our Facebook page (opens in new tab)" target="_blank">
                     <i class="fa-brands fa-square-facebook"></i>
                 </a>
             </div>
