@@ -32,8 +32,15 @@ document.addEventListener("DOMContentLoaded", async function(event) {
 
         // Function to add item to cart using session storage
         function addItemToCart() {
-            let array = getCart();
-            let quantity = document.getElementById("quantity").value;
+            let cartItems = getCart();
+            if (cartItems == undefined) {
+                sessionStorage.setItem("cart-items", JSON.stringify([]));
+                cartItems = getCart();
+            }
+            // Get quantity value and convert to integer
+            let rawQuantity = document.getElementById("quantity").value;
+            let quantity = parseInt(rawQuantity);
+            // Check if quantity provided is a valid number between 1 and 10
             if (quantity >0 && quantity <=10){
                 let productObject = {
                     "image": productImg,
@@ -45,15 +52,14 @@ document.addEventListener("DOMContentLoaded", async function(event) {
                     "db_id": databaseID,
                     "price_id": priceID
                 };
-                array.push(productObject);
-                sessionStorage.setItem("cart-items", JSON.stringify(array));
+                cartItems.push(productObject);
+                sessionStorage.setItem("cart-items", JSON.stringify(cartItems));
                 // Trigger modal to inform user item has been added
                 let modalTrigger = document.getElementById("response-modal-trigger");
                 modalTrigger.click();
             } else {
                 alert("Please choose a quantity between 1 and 10");
             }
-            
         };
 
         // Function to take user to cart page

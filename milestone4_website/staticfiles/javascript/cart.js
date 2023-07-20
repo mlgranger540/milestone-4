@@ -6,9 +6,7 @@ function getCart() {
 // Function to clear all cart items from session storage
 function clearCart() {
     sessionStorage.removeItem("cart-items");
-    let cartTable = document.getElementById("cart-table-body");
-    cartTable.innerHTML = "[]";
-    window.location.reload();
+    updateCartOnPage();
 }
 
 // Function to remove selected item from cart/session storage using its ID

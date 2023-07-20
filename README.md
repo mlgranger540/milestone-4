@@ -177,8 +177,8 @@ My project was thoroughly tested by myself and others throughout its development
 
 Site Function
 - All navigation links/buttons have been tested to ensure they go to the correct locations and there are no broken links
-- 'Add to Cart' button correctly adds the selected product and quantity to the cart, though there is sometimes a bug if the cart has not been correctly cleared (see known bugs below)
-- Users can only supply a number value for the quantity and cannot add items to their cart if the quantity is empty, less than 1 or greater than 10. Originally it was possible to add items to your cart with any number value inluding 0 or leaving the field empty, which would then cause an error when attempting to checkout. To prevent this I added some logic to check whether the value provided is between 1 and 10; if not, an alert is flashed informing the user of the problem.
+- 'Add to Cart' button correctly adds the selected product and quantity to the cart. There used to be a bug where, if the cart had not been initialised by visiting the cart page, or reinitialised after clearing the cart, it would throw an error when trying to add items. To fix this I made sure the cart was properly re-updated after clearing items, and added some logic to the `addItemToCart()` function to check whether the cart was undefined after getting it from session storage; if so, it was set to an empty array, allowing new items to be added.
+- Users can only supply a number value for the quantity and cannot add items to their cart if the quantity is empty, less than 1, greater than 10 or not a whole number. Originally it was possible to add items to your cart with any number value inluding 0 or non-integers, or leave the field empty, which would then cause an error when attempting to checkout. To prevent this I added some logic to parse the quantity value as an integer (stripping off any decimal points), and then check whether the resulting integer is between 1 and 10; if not, an alert is flashed informing the user of the problem.
 - 'Clear Cart' button successfully removes all items from the cart
 - 'Remove' button removes selected product from the cart (though if there are duplicates of a product it will remove all instead of just the selected one - as noted above)
 - Checkout button creates a Stripe checkout session and redirects the user
@@ -214,8 +214,6 @@ The app has been tested on a variety of browsers such as Google Chrome, Microsof
 ### Accessibility
 
 ### Known Bugs
-
-There is sometimes a bug with the cart where if the cart page has not been refreshed after clearing items, it throws an error when trying to add items to the cart again. To minimise this I added a line in the `clearCart()` function to force reload the page after clearing, however I still haven't solved the original bug so it might be possible to still encounter this error when trying to add to the cart.
 
 There seems to be an issue if the name supplied to Stripe when making a purchase does not match exactly with the name on the account in the database.
 
