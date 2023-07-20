@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async function(event) {
         let productInfoDiv = '<a href="./">';
         productInfoDiv += '<h3 class="pt-5 pb-4" title="' + productName + '">' + productName + '</h3>';
         productInfoDiv += '</a>'
-        productInfoDiv += '<h4 class="price pt-1 pb-3">' + productPrice + ' x ' +  '<input id="quantity" type="number" max="10" min="1" value="1"></h4>';
+        productInfoDiv += '<h4 class="price pt-1 pb-3">' + productPrice + ' x ' +  '<input id="quantity" type="number" max="10" min="1" value="1" required></h4>';
         productInfoDiv += '<p class="description pt-2 pb-2">Description:</p>';
         productInfoDiv += '<p>' + productDesc + "</p>";
         document.getElementById("product-info-div").innerHTML = productInfoDiv;
@@ -34,21 +34,26 @@ document.addEventListener("DOMContentLoaded", async function(event) {
         function addItemToCart() {
             let array = getCart();
             let quantity = document.getElementById("quantity").value;
-            let productObject = {
-                "image": productImg,
-                "name": productName,
-                "price": productPrice,
-                "description": productDesc,
-                "quantity": quantity,
-                "id": productID,
-                "db_id": databaseID,
-                "price_id": priceID
-            };
-            array.push(productObject);
-            sessionStorage.setItem("cart-items", JSON.stringify(array));
-            // Trigger modal to inform user item has been added
-            let modalTrigger = document.getElementById("response-modal-trigger");
-            modalTrigger.click();
+            if (quantity >0 && quantity <=10){
+                let productObject = {
+                    "image": productImg,
+                    "name": productName,
+                    "price": productPrice,
+                    "description": productDesc,
+                    "quantity": quantity,
+                    "id": productID,
+                    "db_id": databaseID,
+                    "price_id": priceID
+                };
+                array.push(productObject);
+                sessionStorage.setItem("cart-items", JSON.stringify(array));
+                // Trigger modal to inform user item has been added
+                let modalTrigger = document.getElementById("response-modal-trigger");
+                modalTrigger.click();
+            } else {
+                alert("Please choose a quantity between 1 and 10");
+            }
+            
         };
 
         // Function to take user to cart page
