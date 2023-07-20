@@ -177,7 +177,7 @@ My project was thoroughly tested by myself and others throughout its development
 
 Site Function
 - All navigation links/buttons have been tested to ensure they go to the correct locations and there are no broken links
-- 'Add to Cart' button correctly adds the selected product and quantity to the cart. There used to be a bug where, if the cart had not been initialised by visiting the cart page, or reinitialised after clearing the cart, it would throw an error when trying to add items. To fix this I made sure the cart was properly re-updated after clearing items, and added some logic to the `addItemToCart()` function to check whether the cart was undefined after getting it from session storage; if so, it was set to an empty array, allowing new items to be added.
+- 'Add to Cart' button correctly adds the selected product and quantity to the cart. There used to be a bug where, if the cart had not been initialised by visiting the cart page, or reinitialised after clearing the cart, it would throw an error when trying to add items. To fix this I made sure the cart was properly re-updated after clearing items, and added some logic to the `addItemToCart()` function to check whether the cart is undefined after getting it from session storage; if so, it is set to an empty array, allowing new items to be added.
 - Users can only supply a number value for the quantity and cannot add items to their cart if the quantity is empty, less than 1, greater than 10 or not a whole number. Originally it was possible to add items to your cart with any number value inluding 0 or non-integers, or leave the field empty, which would then cause an error when attempting to checkout. To prevent this I added some logic to parse the quantity value as an integer (stripping off any decimal points), and then check whether the resulting integer is between 1 and 10; if not, an alert is flashed informing the user of the problem.
 - 'Clear Cart' button successfully removes all items from the cart
 - 'Remove' button removes selected product from the cart (though if there are duplicates of a product it will remove all instead of just the selected one - as noted above)
@@ -203,13 +203,22 @@ Stripe Checkout
 
 ### Responsiveness
 
-Due to time constraints on this project, I have not been able to make the website fully responsive, as I had to focus my efforts on the functionality of the site and the payment system itself. However I have used Bootstrap's grid feature and breakpoints to improve the reponsiveness, so most aspects of the site resize according to the screen size, making the app useable across a variety of devices. However some things such as the fonts and tables don't scale as well, becoming too large/small on mobile, and the menu options become stacked and take up quite a lot of screen space. Given more time I would've liked to make the site fully responsive and add a collapsible menu bar to improve the user experience for mobile users, and I hope to implement this in the future.
+Due to time constraints on this project, I have not been able to make the website fully responsive, as I had to focus my efforts on the functionality of the site and the payment system itself. However I have used Bootstrap's grid feature and breakpoints to improve the reponsiveness, so most aspects of the site resize according to the screen size, making the app useable across a variety of devices. Unfortunately though there are still some elements such as the fonts and tables that don't scale as well, becoming too large/small on mobile, and the menu options become stacked and take up quite a lot of screen space. Given more time I would've liked to make the site fully responsive and add a collapsible menu bar to improve the user experience for mobile users, and I hope to implement this in the future.
 
 ### Compatibility
 
 The app has been tested on a variety of browsers such as Google Chrome, Microsoft Edge and Mozilla Firefox. No compatibility issues have been found and the app works well on all browsers.
 
 ### Validation
+
+All pages of the website were passed through the [W3C validator](https://validator.w3.org/) via their URI and no issues were found.
+
+<img width="50%" src="./readme-images/screenshots/validated-html-home.png" alt="HTML validated - home"><img width="50%" src="./readme-images/screenshots/validated-html-shop.png" alt="HTML validated - shop">
+<img width="50%" src="./readme-images/screenshots/validated-html-product.png" alt="HTML validated - product page"><img width="50%" src="./readme-images/screenshots/validated-html-login.png" alt="HTML validated - login">
+
+CSS was passed through the [Jigsaw validator](https://jigsaw.w3.org/css-validator/) by direct input and no issues were found.
+
+![CSS Validated](./readme-images/screenshots/validated-css.png)
 
 ### Accessibility
 
