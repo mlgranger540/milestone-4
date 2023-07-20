@@ -129,6 +129,7 @@ Finally, there is a simple contact page which shows the contact details and soci
 - A nice feature to add would be to have the app send a confirmation email to the customer when an order has been placed. This was a feature I looked at adding but didn't have time to implement in the end.
 - It would also be nice to have a more customised sign up form rather than the default Django one, but I had to prioritise focus on other aspects on the app's design.
 - Currently is it possible to add multiple instances of the same item to the cart, as they are not recognised as being duplicates of the same item. This also reveals a drawback with the way the 'Remove' button works, as it uses the product ID and therefore removes all instances of the product from the cart instead of just the one selected. Ideally, to avoid this, I would add some logic to check whether the item being added already exists in the cart, and if so, the item should not be added again and instead the new quantity of the product should be added to the existing quantity. This issue was only noted towards the end of the build however so there was not time to implement this.
+- The site is not fully responsive in its current state; this is another improvement I would've added given more time.
 
 ---
 
@@ -177,6 +178,7 @@ My project was thoroughly tested by myself and others throughout its development
 Site Function
 - All navigation links/buttons have been tested to ensure they go to the correct locations and there are no broken links
 - 'Add to Cart' button correctly adds the selected product and quantity to the cart, though there is sometimes a bug if the cart has not been correctly cleared (see known bugs below)
+- Users can only supply a number value for the quantity and cannot add items to their cart if the quantity is empty, less than 1 or greater than 10. Originally it was possible to add items to your cart with any number value inluding 0 or leaving the field empty, which would then cause an error when attempting to checkout. To prevent this I added some logic to check whether the value provided is between 1 and 10; if not, an alert is flashed informing the user of the problem.
 - 'Clear Cart' button successfully removes all items from the cart
 - 'Remove' button removes selected product from the cart (though if there are duplicates of a product it will remove all instead of just the selected one - as noted above)
 - Checkout button creates a Stripe checkout session and redirects the user
@@ -200,6 +202,12 @@ Stripe Checkout
 - Stripe webhook functions to add orders to the database once payment has been completed. This feature was initially broken on the live site, which turned out to be due to a typo when the environment variables were added to Heroku, and has now been rectified.
 
 ### Responsiveness
+
+Due to time constraints on this project, I have not been able to make the website fully responsive, as I had to focus my efforts on the functionality of the site and the payment system itself. However I have used Bootstrap's grid feature and breakpoints to improve the reponsiveness, so most aspects of the site resize according to the screen size, making the app useable across a variety of devices. However some things such as the fonts and tables don't scale as well, becoming too large/small on mobile, and the menu options become stacked and take up quite a lot of screen space. Given more time I would've liked to make the site fully responsive and add a collapsible menu bar to improve the user experience for mobile users, and I hope to implement this in the future.
+
+### Compatibility
+
+The app has been tested on a variety of browsers such as Google Chrome, Microsoft Edge and Mozilla Firefox. No compatibility issues have been found and the app works well on all browsers.
 
 ### Validation
 

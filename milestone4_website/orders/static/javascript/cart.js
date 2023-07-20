@@ -1,7 +1,7 @@
 // Function to get cart items from session storage
 function getCart() {
     return JSON.parse(sessionStorage.getItem("cart-items"));
-};
+}
 
 // Function to clear all cart items from session storage
 function clearCart() {
@@ -9,7 +9,7 @@ function clearCart() {
     let cartTable = document.getElementById("cart-table-body");
     cartTable.innerHTML = "[]";
     window.location.reload();
-};
+}
 
 // Function to remove selected item from cart/session storage using its ID
 function removeFromCart(element) {
@@ -51,7 +51,7 @@ function updateCartOnPage() {
             clearCartButton.disabled = false;
             checkoutButton.disabled = false;
         });
-    };
+    }
     newBody += "</tbody>";
     cartTableBody.innerHTML = newBody;
     // If cart is empty, clear cart and checkout buttons are disabled
@@ -59,7 +59,7 @@ function updateCartOnPage() {
         clearCartButton.disabled = true;
         checkoutButton.disabled = true;
     }
-};
+}
 
 // Update cart table and add event listener to clear button on page load
 window.onload = (event) => {
@@ -67,7 +67,7 @@ window.onload = (event) => {
 
     let clearCartButton = document.getElementById("clear-cart-button");
     clearCartButton.addEventListener("click", clearCart);
-}
+};
 
 // Cart items price ID and quantity are stringified and passed to Stripe for checkout
 fetch("/orders/config/").then((result) => { return result.json(); }).then((data) => {
