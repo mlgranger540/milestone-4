@@ -128,7 +128,7 @@ Finally, there is a simple contact page which shows the contact details and soci
 
 - A nice feature to add would be to have the app send a confirmation email to the customer when an order has been placed. This was a feature I looked at adding but didn't have time to implement in the end.
 - It would also be nice to have a more customised sign up form rather than the default Django one, but I had to prioritise focus on other aspects on the app's design.
-- Currently is it possible to add multiple instances of the same item to the cart, as they are not recognised as being duplicates of the same item. This also reveals a drawback with the way the 'Remove' button works, as it uses the product ID and therefore removes all instances of the product from the cart instead of just the one selected. Ideally, to avoid this, I would add some logic to check whether the item being added already exists in the cart, and if so, the item should not be added again and instead the new quantity of the product should be added to the existing quantity. This issue was only noted towards the end of the build however so there was not time to implement this.
+- Currently it is possible to add multiple instances of the same item to the cart, as they are not recognised as being duplicates of the same item. This also reveals a drawback with the way the 'Remove' button works, as it uses the product ID and therefore removes all instances of the product from the cart instead of just the one selected. Ideally, to avoid this, I would add some logic to check whether the item being added already exists in the cart, and if so, the item should not be added again and instead the new quantity of the product should be added to the existing quantity. This issue was only noted towards the end of the build however so there was not time to implement this.
 - The site is not fully responsive in its current state; this is another improvement I would've added given more time.
 
 ---
@@ -141,6 +141,8 @@ The layout and design of the website were first visualised using wireframes. HTM
 
 <img width="55%" src="./readme-images/wireframes/home-wireframe.png" alt="Home Wireframe"><img width="45%" src="./readme-images/wireframes/profile-wireframe.png" alt="Profile Wireframe">
 <img width="44.4%" src="./readme-images/wireframes/shop-wireframe.png" alt="Shop Wireframe"><img width="55.6%" src="./readme-images/wireframes/cart-wireframe.png" alt="Cart Wireframe">
+
+The website uses a Google font called Delicious Handrawn for the logo. I chose this font as I wanted something with a casual, hand-written feel to it, while also remaining clearly legible.
 
 ### Database
 
@@ -207,18 +209,18 @@ Due to time constraints on this project, I have not been able to make the websit
 
 ### Compatibility
 
-The app has been tested on a variety of browsers such as Google Chrome, Microsoft Edge and Mozilla Firefox. No compatibility issues have been found and the app works well on all browsers.
+The app has been tested on a variety of internet browsers to ensure compatibility. No compatibility issues have been found on Google Chrome, Microsoft Edge, Mozilla Firefox or Safari and the app works well and looks good on all these browsers.
 
 ### Validation
 
 All pages of the website were passed through the [W3C validator](https://validator.w3.org/) via their URI and no issues were found.
 
-<img width="50%" src="./readme-images/screenshots/validated-html-home.png" alt="HTML validated - home"><img width="50%" src="./readme-images/screenshots/validated-html-shop.png" alt="HTML validated - shop">
-<img width="50%" src="./readme-images/screenshots/validated-html-product.png" alt="HTML validated - product page"><img width="50%" src="./readme-images/screenshots/validated-html-login.png" alt="HTML validated - login">
+<img width="50%" src="./readme-images/validation/validated-html-home.png" alt="HTML validated - home"><img width="50%" src="./readme-images/validation/validated-html-shop.png" alt="HTML validated - shop">
+<img width="50%" src="./readme-images/validation/validated-html-product.png" alt="HTML validated - product page"><img width="50%" src="./readme-images/validation/validated-html-login.png" alt="HTML validated - login">
 
 CSS was passed through the [Jigsaw validator](https://jigsaw.w3.org/css-validator/) by direct input and no issues were found.
 
-![CSS Validated](./readme-images/screenshots/validated-css.png)
+![CSS Validated](./readme-images/validation/validated-css.png)
 
 ### Accessibility
 
@@ -240,8 +242,12 @@ I referred to the [Django docs](https://docs.djangoproject.com/en/4.2/intro/tuto
 
 I used this [guidance from Heroku](https://devcenter.heroku.com/articles/django-app-configuration) to help when trying to deploy my Django app.
 
+I used these [docs on WhiteNoise](https://whitenoise.readthedocs.io/en/stable/django.html) to help configure my app for production when there were issues accessing static files.
+
 ### Content and Media
 
-All written content and images used on the website and products were created by myself.
+All written content on the website was created by myself.
 
-[Google fonts](https://fonts.google.com/) for the logo font and [Font Awesome](https://fontawesome.com/) for the icons
+All images used on the site and for the products were designed and created by myself using digital art software.
+
+[Google fonts](https://fonts.google.com/) for the logo font and [Font Awesome](https://fontawesome.com/) for the icons.
