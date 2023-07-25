@@ -1,10 +1,103 @@
-{% block title %}Sign Up{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Little Bit Queer Art Shop | Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Delicious+Handrawn&family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'signup.js' %}"></script>
+    <script src="https://kit.fontawesome.com/22fc12a701.js" crossorigin="anonymous"></script>
+</head>
 
-{% block content %}
-<h2>Sign Up</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Sign Up</button>
-</form>
-{% endblock %}
+<body>
+    <header>
+        <div id="header" class="row">
+            <div class="col-1 col-sm-3 col-lg-4"></div>
+            <div id="title" class="col-8 col-sm-6 col-lg-4">
+                <a href="../../">
+                    <h1><span class="tiny-font colour-1">The</span> <span class="med-font colour-2">Little</span> <span class="small-font colour-3">Bit</span> Queer</h1>
+                    <h2><span class="med-font">Art</span> <span class="colour-2">Shop</span></h2>
+                </a>
+            </div>
+            <div class="col-3 col-lg-4">
+                <a href="../../orders/cart" aria-label="Your cart">
+                    <i class="options fa-solid fa-cart-shopping mt-5 me-2 me-sm-4 me-lg-3 me-xl-5 pe-0 pe-sm-1 pe-md-2 pe-lg-0 pb-3"></i>
+                </a>
+                {% if user.is_authenticated %}
+                <a href="../users/profile" aria-label="Your profile">
+                    <i class="options fa-solid fa-user mt-5 me-3 me-sm-4 me-lg-3 pe-0 pe-sm-1 pe-md-2 pe-lg-0 pb-3"><span id="options-username" class="ms-3 me-2 d-none d-lg-inline">{{ user.username }}</span></i>
+                </a>
+                {% else %}
+                <a href="../accounts/login" aria-label="Log in">
+                    <i class="options fa-solid fa-user mt-5 me-3 me-sm-4 me-lg-3 pe-0 pe-sm-1 pe-md-2 pe-lg-0 pb-3"><span id="options-username" class="ms-3 me-2 d-none d-lg-inline">Log In</span></i>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        <nav id="header-nav" class="navbar navbar-expand-md">
+            <div class="container-fluid justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item item-start px-5">
+                        <a class="nav-link px-5 px-sm-4" href="../../">Home</a>
+                    </li>
+                    <li class="nav-item item-mid px-5">
+                        <a class="nav-link px-5 px-sm-4" href="../../shop">Shop</a>
+                    </li>
+                    <li class="nav-item item-end px-5">
+                        <a class="nav-link px-5 px-sm-4" href="../../contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section>
+        <div class="flex-container mt-5 mb-5 pb-3">
+            <div class="row">
+                <div class="col-1 col-sm-2 col-lg-3"></div>
+                <h3 class="log-in-box-top text-center col-10 col-sm-8 col-lg-6 pt-5 pb-4">Sign Up</h3>
+                <div class="col-1 col-sm-2 col-lg-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-1 col-sm-2 col-lg-3"></div>
+                <div class="log-in-box-bottom col-10 col-sm-8 col-lg-6">
+                    <form method="post" class="mx-5 px-4 pt-3 pb-2">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="text-end mx-3 mb-5">
+                            <button type="submit" id="sign-up-button">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-1 col-sm-2 col-lg-3"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div id="footer" class="row pt-4 pb-4">
+            <div class="col-1 col-sm-2"></div>
+            <div class="col-10 col-sm-8 py-1 text-center">
+                <a class="social-buttons mx-4" href="https://www.twitter.com" aria-label="Our Twitter page (opens in new tab)" target="_blank">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <a class="social-buttons mx-4" href="https://www.instagram.com" aria-label="Our Instagram page (opens in new tab)" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a class="social-buttons mx-4" href="https://www.facebook.com" aria-label="Our Facebook page (opens in new tab)" target="_blank">
+                    <i class="fa-brands fa-square-facebook"></i>
+                </a>
+            </div>
+            <div class="col-1 col-sm-2"></div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+
+</html>

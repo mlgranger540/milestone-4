@@ -6,7 +6,6 @@ from users.models import User
 class OrderManager(models.Manager):
     def create_order(self, user,product,stripe_invoice_id,quantity):
         order = self.create(user=user,product=product,stripe_invoice_id=stripe_invoice_id,quantity=quantity)
-        # do something with the book
         return order
 
 class Order(models.Model):
