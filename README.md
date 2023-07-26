@@ -281,6 +281,10 @@ CSS was passed through the [Jigsaw validator](https://jigsaw.w3.org/css-validato
 
 ### Accessibility
 
+[WAVE](https://wave.webaim.org/) was used to assess the accessbility of the website and no errors or alerts were given. It did flag up some issues with empty links, which I corrected by adding ARIA labels to these to assist screen reader users. Some contrast errors were found, however I was unable to rectify these without negatively affecting the look and feel of the site.
+
+![WAVE Report](./readme-images/validation/wave.png)
+
 ### Known Bugs
 
 There seems to be an issue if the name supplied to Stripe when making a purchase does not match exactly with the name on the account in the database.
@@ -288,6 +292,18 @@ There seems to be an issue if the name supplied to Stripe when making a purchase
 ---
 
 ## Deployment
+
+The final project has been deployed to Heroku using a continuous delivery (CD) pipeline. This is linked up to the project repository on GitHub, meaning that whenever new code is committed and pushed to the main branch, Heroku automatically builds a new version of the app using this code and deploys it. As I am the only developer working on this project, I have been committing my work directly into the main branch, however for most projects it would be preferable to work in a separate branch and then create a pull request to merge changes into main once they have been tested.
+
+The application currently runs on one dyno. In the future, this could be improved by using two dynos, one building automatically from a development branch, and the main one being manually updated once development has been fully tested. Automatic continuous integration (CI) testing could also be implemented so that builds are tested before Heroku attempts deployment, to prevent bugs or errors being deployed into the live site.
+
+To forward web requests from the client to the Django application, a web server gateway interface is required. As recommended by Heroku, I have used Gunicorn to handle web request forwarding, with this being configured in the Procfile.
+
+HTTPS has been enabled using the automatic SSL certificate setting within Heroku, to ensure that connections to the website are encrypted.
+
+All pip packages that are required to be installed in order to run the application are supplied in the requirements.txt file, allowing Heroku to install all the relevant packages when building the app. Heroku also automatically runs a `collectstatic` command when building the app to collect all static files (CSS, JavaScript and images) from their individual directories within applications (listed in settings.py) and add them to one static folder, in order to allow these to be loaded correctly in the deployed site.
+
+The database has been deployed using migrations, as mentioned in the [Database and Application](#database-and-application-layout) section. 
 
 ---
 
