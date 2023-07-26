@@ -106,9 +106,13 @@ If the payment has been completed successfully, the user will be redirected to a
 
 ### Log In, Sign Up and Profile
 
-The website contains a simple login page requiring a username and password, which are matched to the users table in the database, and authorisation only occurs if the credentials are correct. If a visitor does not have an account, they are also able to create one from here using the 'Sign Up' link and providing a username, email, full name and password, which have to meet certain criteria to be accepted. Once the criteria are met, the new user is added to the database and they are able to log in to their account.
+The website contains a simple login page requiring a username and password, which are matched to the users table in the database, and authorisation only occurs if the credentials are correct.
 
 ![Log In](./readme-images/screenshots/login.png)
+
+If a visitor does not have an account, they are also able to create one from here using the 'Sign Up' link and providing a username, email, full name and password, which have to meet certain criteria to be accepted. This form uses Django's template sign up form as a basis. Once the criteria are met, the new user is added to the database and they are able to log in to their account.
+
+![Sign Up](./readme-images/screenshots/signup.png)
 
 Once logged in, the user can visit their profile, which shows their personal details as supplied when they signed up or made a purchase, and a table containing their order history, including the price, date and status of the purchase, with the newest orders shown first.
 
@@ -127,7 +131,7 @@ Finally, there is a simple contact page which shows the contact details and soci
 ### Improvements and Features to Add
 
 - A nice feature to add would be to have the app send a confirmation email to the customer when an order has been placed. This was a feature I looked at adding but didn't have time to implement in the end.
-- It would also be nice to have a more customised sign up form rather than the default Django one, but I had to prioritise focus on other aspects on the app's design.
+- It would also be nice to have a more customised sign up form rather than using the default Django one, but as I had to prioritise focus on other areas I have not been able to do this, beyond adding my custom styling to the page and form.
 - Currently it is possible to add multiple instances of the same item to the cart, as they are not recognised as being duplicates of the same item. This also reveals a drawback with the way the 'Remove' button works, as it uses the product ID and therefore removes all instances of the product from the cart instead of just the one selected. Ideally, to avoid this, I would add some logic to check whether the item being added already exists in the cart, and if so, the item should not be added again and instead the new quantity of the product should be added to the existing quantity. This issue was only noted towards the end of the build however so there was not time to implement this.
 - The site is not fully responsive in its current state; this is another improvement I would've added given more time.
 
@@ -141,8 +145,6 @@ The layout and design of the website were first visualised using wireframes. HTM
 
 <img width="55%" src="./readme-images/wireframes/home-wireframe.png" alt="Home Wireframe"><img width="45%" src="./readme-images/wireframes/profile-wireframe.png" alt="Profile Wireframe">
 <img width="44.4%" src="./readme-images/wireframes/shop-wireframe.png" alt="Shop Wireframe"><img width="55.6%" src="./readme-images/wireframes/cart-wireframe.png" alt="Cart Wireframe">
-
-The website uses a Google font called Delicious Handrawn for the logo. I chose this font as I wanted something with a casual, hand-written feel to it, while also remaining clearly legible.
 
 ### Database
 
