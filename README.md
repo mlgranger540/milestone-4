@@ -38,6 +38,29 @@ View the live project [here](https://little-bit-queer-art-shop-bed824a2914a.hero
 
 ---
 
+## Design and Planning
+
+### Website
+
+The layout and design of the website were first visualised using wireframes. HTML, CSS and Bootstrap were then used to recreate this design in code and build the UI of the website.
+
+<img width="55%" src="./readme-images/wireframes/home-wireframe.png" alt="Home Wireframe"><img width="45%" src="./readme-images/wireframes/profile-wireframe.png" alt="Profile Wireframe">
+<img width="44.4%" src="./readme-images/wireframes/shop-wireframe.png" alt="Shop Wireframe"><img width="55.6%" src="./readme-images/wireframes/cart-wireframe.png" alt="Cart Wireframe">
+
+The website uses a Google font called Delicious Handrawn for the logo. I chose this font as I wanted something with an informal, hand-written feel to it, while also remaining clearly legible. Each word in the logo is also sized differently creating a jumbled effect, which adds to this casual, playful appearance.
+
+The site's colour scheme uses a variety of warm pastel colours, with shades of orange, yellow, pink, purple and brown on a white background. I chose these as I wanted a warm, cosy feeling to the site, to make visitors feel at home. These colours are also easy on the eye and compliment each other well.
+
+### Database
+
+The database structure used in this project is fairly simple, featuring three tables - orders, products and users. These are based off the default Django models. The tables are linked together using foreign and primary keys, for instance an order will contain user and product information by referring to the relevant ID in the users and products tables. The database structure and relationship can be seen in the ERD below.
+
+<img width="70%" src="./readme-images/erd/erd.png" alt="Database ERD">
+
+More information on how the database was set up is outlined in the [Project Structure](#project-structure---backend) section.
+
+---
+
 ## Features
 
 ### Header, Footer and Navigation
@@ -131,22 +154,25 @@ Finally, there is a simple contact page which shows the contact details and soci
 ### Improvements and Features to Add
 
 - A nice feature to add would be to have the app send a confirmation email to the customer when an order has been placed. This was a feature I looked at adding but didn't have time to implement in the end.
-- It would also be nice to have a more customised sign up form rather than using the default Django one, but as I had to prioritise focus on other areas I have not been able to do this, beyond adding my custom styling to the page and form.
+- It would also be nice to have a more customised sign up form rather than using the default Django one, but I have not been able to do this yet, beyond adding my custom styling to the page and form, as I had to prioritise focus on other areas of the site.
 - Currently it is possible to add multiple instances of the same item to the cart, as they are not recognised as being duplicates of the same item. This also reveals a drawback with the way the 'Remove' button works, as it uses the product ID and therefore removes all instances of the product from the cart instead of just the one selected. Ideally, to avoid this, I would add some logic to check whether the item being added already exists in the cart, and if so, the item should not be added again and instead the new quantity of the product should be added to the existing quantity. This issue was only noted towards the end of the build however so there was not time to implement this.
-- The site is not fully responsive in its current state; this is another improvement I would've added given more time.
+- The site is not fully responsive in its current state; this is another improvement I would've added given more time (see [below](#responsiveness) for more detail).
 
 ---
 
-## Design and Planning
+## Project Structure - Backend
 
-### Website
+### Database and Application Layout
 
-The layout and design of the website were first visualised using wireframes. HTML, CSS and Bootstrap were then used to recreate this design in code and build the UI of the website.
+The backend design for this project was relatively straightforward due to a combination of factors, primarily the lack of need for a complex data structure due to both Django and Stripe helping with data management.
 
-<img width="55%" src="./readme-images/wireframes/home-wireframe.png" alt="Home Wireframe"><img width="45%" src="./readme-images/wireframes/profile-wireframe.png" alt="Profile Wireframe">
-<img width="44.4%" src="./readme-images/wireframes/shop-wireframe.png" alt="Shop Wireframe"><img width="55.6%" src="./readme-images/wireframes/cart-wireframe.png" alt="Cart Wireframe">
+The project is split up into 3 main Django applications: Users, Products and Orders. Each of these contains a models.py file to define itself in the database, as well as any associated Django views in the respective views.py file within each application folder. URL routing information for each is also stored in the urls.py file, mapping both API routes and HTML page routes to Python functions in the views.py file. A fourth Django application, Home, is used for the Home, Shop and Cart page views but does not need to contain any model data or backend logic outside of showing template views.
 
-### Database
+Looking at the database structure, both the orders and products models inherit from the standard Django models class, providing the correct data types as well as an ID field out of the box. For products, only two extra fields were required, a stripe_id string field containing the ID of the product in the Stripe platform, and an integer to track quantity left of a product. Orders are a little more complex, containing foreign key references to products and users so that a row entry is made per customer per order of a specific product. The stripe invoice ID is also stored in the orders table so I can look up further information on the transaction.
+
+The users table works a little differently as it extends from the Django auth abstract user class as opposed to the Django models class. By extending from an abstract user class, not only are a number of user-centric columns provided already (username, password, email etc.) but also all user authentication is handled for me, significantly reducing development time.
+
+### Stripe API
 
 ---
 
@@ -180,29 +206,29 @@ The layout and design of the website were first visualised using wireframes. HTM
 My project was thoroughly tested by myself and others throughout its development to ensure that all aspects of the application work as intended.
 
 Site Function
-- All navigation links/buttons have been tested to ensure they go to the correct locations and there are no broken links
+- All navigation links/buttons have been tested to ensure they go to the correct locations and there are no broken links.
 - 'Add to Cart' button correctly adds the selected product and quantity to the cart. There used to be a bug where, if the cart had not been initialised by visiting the cart page, or reinitialised after clearing the cart, it would throw an error when trying to add items. To fix this I made sure the cart was properly re-updated after clearing items, and added some logic to the `addItemToCart()` function to check whether the cart is undefined after getting it from session storage; if so, it is set to an empty array, allowing new items to be added.
 - Users can only supply a number value for the quantity and cannot add items to their cart if the quantity is empty, less than 1, greater than 10 or not a whole number. Originally it was possible to add items to your cart with any number value inluding 0 or non-integers, or leave the field empty, which would then cause an error when attempting to checkout. To prevent this I added some logic to parse the quantity value as an integer (stripping off any decimal points), and then check whether the resulting integer is between 1 and 10; if not, an alert is flashed informing the user of the problem.
-- 'Clear Cart' button successfully removes all items from the cart
-- 'Remove' button removes selected product from the cart (though if there are duplicates of a product it will remove all instead of just the selected one - as noted above)
-- Checkout button creates a Stripe checkout session and redirects the user
+- 'Clear Cart' button successfully removes all items from the cart.
+- 'Remove' button removes selected product from the cart (though if there are duplicates of a product it will remove all instead of just the selected one - as noted [above](#improvements-and-features-to-add)).
+- Checkout button creates a Stripe checkout session and redirects the user.
 
 Data Retrieval
-- Products displayed on the home and shop pages show the correct information retrieved from Stripe and the database, including product name, image, description and price
-- When a product link is clicked, the following page loads in the data from the selected product correctly
+- Products displayed on the home and shop pages show the correct information retrieved from Stripe and the database, including product name, image, description and price.
+- When a product link is clicked, the following page loads in the data from the selected product correctly.
 - The logged in user's past orders are correctly displayed on their profile with no duplicates or other user's orders. Originally duplicate orders were being displayed if there were multiple items in an order, as each item is stored in the database as a separate order with the same invoice ID. To avoid this I added some logic to filter the orders and remove any with duplicate invoice IDs so each order is only shown once.
 
 Authorisation and Security
-- Log in succeeds if user credentials matching a user in the database are corrected inputted, and fails if credentials do not match
+- Log in succeeds if user credentials matching a user in the database are corrected inputted, and fails if credentials do not match.
 - Logged in users are shown a link to their profile with their username; visitors are shown a link to log in. The profile page redirects the user to the login page if they are not logged in to avoid users being able to access this page without being logged into an account.
-- Users are able to successfully create an account using the sign up form
+- Users are able to successfully create an account using the sign up form.
 - Users are required to be logged in to buy items, so attempts to access the cart page while not logged in bounce the user to the login page. Originally users were able to access the cart page before logging in which would then cause an error if they attempted to checkout, so as part of testing I made login required for this page.
-- Log out button logs current user out successfully
-- No plain text passwords are stored in the database to avoid exposing sensitive information
+- Log out button logs current user out successfully.
+- No plain text passwords are stored in the database to avoid exposing sensitive information.
 
 Stripe Checkout
-- Stripe checkout shows the correct items and quantities being purchased from the user's cart
-- Payment is successfully completed when tested using Stripe's test card number
+- Stripe checkout shows the correct items and quantities being purchased from the user's cart.
+- Payment is successfully completed when tested using Stripe's test card number.
 - Stripe webhook functions to add orders to the database once payment has been completed. This feature was initially broken on the live site, which turned out to be due to a typo when the environment variables were added to Heroku, and has now been rectified.
 
 ### Responsiveness
