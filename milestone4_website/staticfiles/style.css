@@ -299,6 +299,11 @@ input[type=email] {
     width: 55%;
 }
 
+.errorlist > li {
+    font-weight: 600;
+    color: #eb7366;
+}
+
 /* Profile */
 
 ul {
