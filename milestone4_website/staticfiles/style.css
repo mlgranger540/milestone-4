@@ -9,14 +9,15 @@
 body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     /* color: #a37d79; */
-    color: #9c7874;
+    color: #9a7a77;
 }
 
 a {
     text-decoration: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: bolder;
-    color: #a37d79;
+    /* color: #a37d79; */
+    color: #9a7a77;
 }
 
 button {
@@ -24,6 +25,10 @@ button {
     border-radius: 0.4rem;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: #957572;
+}
+
+h3 {
+    color: #a37d79;
 }
 
 p, h3 {
@@ -35,7 +40,8 @@ p, h3 {
 }
 
 a:hover {
-    border-bottom: #a37d79 1.8px solid;
+    /* border-bottom: #a37d79 1.8px solid; */
+    border-bottom: #9a7a77 1.8px solid;
 }
 
 
@@ -112,7 +118,8 @@ h2 {
 }
 
 .nav-link {
-    --bs-nav-link-color: #a37d79;
+    /* --bs-nav-link-color: #a37d79; */
+    --bs-nav-link-color: #9a7a77;
     font-size: 121.6%;
 }
 
