@@ -127,6 +127,8 @@ The checkout button creates a Stripe checkout session, providing the price ID an
 
 If the payment has been completed successfully, the user will be redirected to a success page - or a cancelled page if the payment was not completed. From here they can return to the site homepage.
 
+Further information on Stripe checkout and payment handling is documented [here](#stripe-api).
+
 ### Log In, Sign Up and Profile
 
 The website contains a simple login page requiring a username and password, which are matched to the users table in the database, and authorisation only occurs if the credentials are correct.
@@ -195,7 +197,11 @@ Using the Stripe pip package, the project interacts with the Stripe platform to 
 
 ![Stripe Product](./readme-images/screenshots/stripe-product.png)
 
-There are two methods to look up product information: `get_product` to fetch a specific product using its internal database ID, and `get_all_products` to fetch all products (e.g. on the home page). On product fetch, I look up the product in the PostgreSQL database using the ID supplied and get the Stripe product ID as well as the quantity left. I then use this to query the Stripe API, returning more information on the product as well as pricing information. I then combine the two and return the merged object to the front end to display. This can be seen in the products/views.py file which contains both methods.
+There are two methods to look up product information: `get_product` to fetch a specific product using its internal database ID, and `get_all_products` to fetch all products (e.g. on the home page). On product fetch, I look up the product in the PostgreSQL database using the ID supplied and get the Stripe product ID as well as the quantity left. I then use this to query the Stripe API, returning more information on the product as well as pricing information. I then combine the two and return the merged object to the frontend to display. This can be seen in the /products/views.py file which contains both methods.
+
+Stripe payment logic is handled within the orders application, and is a combination of JavaScript frontend logic to establish a Stripe session and redirect to the Stripe payment page, and a backend route to create the checkout session via the Stripe API. When the 'Checkout' button is clicked on the cart page, all purchased items are sent to the /orders/config route as an array of Stripe price ID and quantity desired. These are the only values the Stripe API needs to know from the ordered products as, internally, it can use the price ID to look up the full product information. Providing a valid Stripe session has been created, and the /orders/config route has successfully created a checkout session with Stripe, a URL for the client browser to redirect to is sent back to the page, and is provided to the `stripe.redirectToCheckout()` JavaScript method, forcing the client browser to redirect to the Stripe payment page.
+
+Following a successful payment, two key things happen. Firstly, Stripe generates an invoice record containing customer details and information on which products were purchased. Secondly, I have set up a webhook within /orders/views.py which listens to an endpoint created in the Stripe developer area for any events of the type `invoice.payment_succeeded`. If such an event is received, I parse the returned invoice object for both customer data captured on the payment form, in order to update my user record in the database with any new information entered on the payment page (e.g. address, phone number etc.), as well as to cycle through the products purchased to reduce the relevant quantity value in the database. This allows me to keep track of stock inventory, which is not possible by Stripe alone (it has no concept of stock, only what a product is).
 
 ---
 
@@ -209,7 +215,7 @@ There are two methods to look up product information: `get_product` to fetch a s
 - Python + Django
 - SQL (PostgreSQL)
 
-### Frameworks, Libraries, APIs, External Stylesheets
+### Frameworks, Libraries, Programs, APIs, External Stylesheets
 
 - [Stripe](https://stripe.com/gb) for handling products, payments and orders
 - [Git](https://git-scm.com/) for version control
