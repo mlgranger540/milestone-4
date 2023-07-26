@@ -47,7 +47,7 @@ The layout and design of the website were first visualised using wireframes. HTM
 <img width="55%" src="./readme-images/wireframes/home-wireframe.png" alt="Home Wireframe"><img width="45%" src="./readme-images/wireframes/profile-wireframe.png" alt="Profile Wireframe">
 <img width="44.4%" src="./readme-images/wireframes/shop-wireframe.png" alt="Shop Wireframe"><img width="55.6%" src="./readme-images/wireframes/cart-wireframe.png" alt="Cart Wireframe">
 
-The website uses a Google font called Delicious Handrawn for the logo. I chose this font as I wanted something with an informal, hand-written feel to it, while also remaining clearly legible. Each word in the logo is also sized differently creating a jumbled effect, which adds to this casual, playful appearance.
+The website uses a Google font called Delicious Handrawn for the logo. I chose this font as I wanted something with a casual, hand-written feel to it, while also remaining clearly legible. Each word in the logo is also sized differently creating a ramshackle effect, which adds to this fun, playful appearance. The hand-drawn style also mirrors the hand-crafted nature of the products on offer.
 
 The site's colour scheme uses a variety of warm pastel colours, with shades of orange, yellow, pink, purple and brown on a white background. I chose these as I wanted a warm, cosy feeling to the site, to make visitors feel at home. These colours are also easy on the eye and compliment each other well.
 
@@ -87,7 +87,7 @@ Beneath this is a product gallery showing the newest products added to the shop.
 
 ### Shop Page
 
-The shop page shows all the products available to buy on the website, sorted into comics and prints. This is done by Fetching all products from the database, then sorting them into two new arrays according to type, before building and displaying divs with the product information in each array.
+The shop page shows all the products available to buy on the website, sorted into comics and prints. This is done by fetching all products from the database, then sorting them into two new arrays according to type, before building and displaying divs with the product information in each array.
 
 ![Shop Page - Comics](./readme-images/screenshots/shop-comics.png)
 
@@ -168,11 +168,34 @@ The backend design for this project was relatively straightforward due to a comb
 
 The project is split up into 3 main Django applications: Users, Products and Orders. Each of these contains a models.py file to define itself in the database, as well as any associated Django views in the respective views.py file within each application folder. URL routing information for each is also stored in the urls.py file, mapping both API routes and HTML page routes to Python functions in the views.py file. A fourth Django application, Home, is used for the Home, Shop and Cart page views but does not need to contain any model data or backend logic outside of showing template views.
 
-Looking at the database structure, both the orders and products models inherit from the standard Django models class, providing the correct data types as well as an ID field out of the box. For products, only two extra fields were required, a stripe_id string field containing the ID of the product in the Stripe platform, and an integer to track quantity left of a product. Orders are a little more complex, containing foreign key references to products and users so that a row entry is made per customer per order of a specific product. The stripe invoice ID is also stored in the orders table so I can look up further information on the transaction.
+Looking at the database structure, both the orders and products models inherit from the standard Django models class, providing the correct data types as well as an ID field out of the box. For products, only two extra fields were required, a stripe_id string field containing the ID of the product in the Stripe platform, and an integer to track quantity left of a product. Orders are a little more complex, containing foreign key references to products and users so that a row entry is made per customer per order of a specific product. The Stripe invoice ID is also stored in the orders table so I can look up further information on the transaction.
 
 The users table works a little differently as it extends from the Django auth abstract user class as opposed to the Django models class. By extending from an abstract user class, not only are a number of user-centric columns provided already (username, password, email etc.) but also all user authentication is handled for me, significantly reducing development time.
 
+Once I had created these models, I ran the following command to generate the required SQL migration code to recreate the models as tables in the database:
+
+```
+python3 manage.py makemigrations
+```
+
+This was followed by another command to execute the migrations on the PostgreSQL server to create the tables:
+
+```
+python3 manage.py migrate
+```
+
+For each model change, I have to run these commands again to ensure the changes are reflected in the database. Past migrations can be seen in the migrations folder within each Django application.
+
+I chose to use PostgreSQL for the project due to its ability to easily handle relational data, as well as providing good compatibility with Django using the psycopg2 pip package which is natively supported (albeit with a couple of tweaks to the database connection code in the settings.py file).
+
+
 ### Stripe API
+
+Using the Stripe pip package, the project interacts with the Stripe platform to fetch product information as well as process payments and create invoices for orders. As mentioned above, each product stores a Stripe product ID which is generated when a product is created in the Stripe dashboard. By storing this ID, I can use the Stripe API to look up further information on each product, avoiding the need to store product information such as name, description, price and associated images in my own database.
+
+![Stripe Product](./readme-images/screenshots/stripe-product.png)
+
+There are two methods to look up product information: `get_product` to fetch a specific product using its internal database ID, and `get_all_products` to fetch all products (e.g. on the home page). On product fetch, I look up the product in the PostgreSQL database using the ID supplied and get the Stripe product ID as well as the quantity left. I then use this to query the Stripe API, returning more information on the product as well as pricing information. I then combine the two and return the merged object to the front end to display. This can be seen in the products/views.py file which contains both methods.
 
 ---
 
