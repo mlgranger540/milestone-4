@@ -221,6 +221,7 @@ Following a successful payment, two key things happen. Firstly, Stripe generates
 - [Git](https://git-scm.com/) for version control
 - [GitHub](https://github.com/) to store the project repository and back up git commits
 - [Bootstrap v5.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/) to assist in creating the structure and design of the webpages
+- [pgAdmin](https://www.pgadmin.org/) to manage the PostgreSQL database and create the ERD
 - [Google Fonts](https://fonts.google.com/) for the logo font
 - [Font Awesome](https://fontawesome.com/) for the social media, cart, user and heart icons
 - [Justinmind](https://www.justinmind.com/) to create the wireframes
