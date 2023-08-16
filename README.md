@@ -53,7 +53,7 @@ The site's colour scheme uses a variety of warm pastel colours, with shades of o
 
 ### Database
 
-The database structure used in this project is fairly simple, featuring three tables - orders, products and users. These are based off the default Django models. The tables are linked together using foreign and primary keys, for instance an order will contain user and product information by referring to the relevant ID in the users and products tables. The database structure and relationship can be seen in the ERD below.
+The database structure used in this project is fairly simple, featuring three tables - orders, products and users. These are based off the default Django models. The tables are linked together using foreign and primary keys, for instance an order will contain user and product information by referring to the relevant ID in the users and products tables. The database structure and relationship can be seen in the Entity-Relationship Diagram (ERD) below.
 
 <img width="70%" src="./readme-images/erd/erd.png" alt="Database ERD">
 
@@ -221,7 +221,8 @@ Following a successful payment, two key things happen. Firstly, Stripe generates
 - [Git](https://git-scm.com/) for version control
 - [GitHub](https://github.com/) to store the project repository and back up git commits
 - [Bootstrap v5.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/) to assist in creating the structure and design of the webpages
-- [pgAdmin](https://www.pgadmin.org/) to manage the PostgreSQL database and create the ERD
+- [ElephantSQL](https://www.elephantsql.com/) to manage the PostgreSQL database
+- [pgAdmin](https://www.pgadmin.org/) to view and edit the data and create the ERD
 - [Google Fonts](https://fonts.google.com/) for the logo font
 - [Font Awesome](https://fontawesome.com/) for the social media, cart, user and heart icons
 - [Justinmind](https://www.justinmind.com/) to create the wireframes
